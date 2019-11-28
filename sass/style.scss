@@ -1,0 +1,39 @@
+// Include parts of Bootstrap
+
+// Required
+@import "bootstrap-4.3.1/scss/functions";
+@import "bootstrap-4.3.1/scss/variables";
+@import "bootstrap-4.3.1/scss/mixins";
+
+
+//optional
+@import "bootstrap-4.3.1/scss/utilities/";
+@import "bootstrap-4.3.1/scss/grid";
+@import "bootstrap-4.3.1/scss/buttons";
+@import "bootstrap-4.3.1/scss/images";
+@import "bootstrap-4.3.1/scss/jumbotron";
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+}
+
+.bg-Img {
+  background-image: url('../images/landing.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+.logo-size {
+  width: 50%;
+  height: 50%;
+}
