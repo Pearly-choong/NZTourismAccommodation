@@ -1,3 +1,6 @@
+$primary: #29ade5;
+$h1-font-size: 2rem;
+$font-family-sans-serif: 'Josefin Sans', sans-serif;
 // Include parts of Bootstrap
 
 // Required
@@ -25,15 +28,56 @@ body {
 
 }
 
-.bg-Img {
-  background-image: url('../images/landing.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+
+h1, p {
+  font-family: $font-family-sans-serif;
 }
 
 
+.background-carousel {
+  background-image: url('../images/landing.jpg');
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 667px;
+}
+
+
+.brand-size {
+  width: 100%;
+  height: 80px;
+}
+
 .logo-size {
-  width: 50%;
-  height: 50%;
+  width: 160px;
+  height: 60px;
+}
+
+.icon-size {
+  width: 70px;
+  height: 70px;
+}
+
+.icon-size:hover {
+  color: $primary;
+}
+
+.quotes {
+  display: none;
+}
+
+
+.resize-font {
+  font-size: 1.5rem;
+}
+
+
+
+
+@media (min-width: 1025px){
+  .background-carousel{
+    width: 100%;
+    height: 1080px;
+  }
 }
