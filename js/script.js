@@ -1,6 +1,6 @@
 console.log('NZ tourism');
-$('#searchForm').hide();
-
+// $('#searchForm').hide();
+$('#sec1').hide();
 
 $(document).ready(function(){
 

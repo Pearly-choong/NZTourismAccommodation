@@ -1,106 +1,112 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
 
-    <!-- responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- social media icons - from fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- social media icons - from fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- favicon -->
-    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="images/assets/logos/SilverFern.gif">
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="images/assets/logos/SilverFern.gif">
 
-    <!-- link to google font -->
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <!-- link to google font -->
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
-    <!-- jquery UI cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/dark-hive/jquery-ui.min.css">
+  <!-- jquery UI cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.min.css" integrity="sha256-pXjw+x4dOoTZgRBmPD/ilEFccRj2c57rZaYj9A9kRrQ=" crossorigin="anonymous" />
 
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
 
-    <!-- own CSS -->
-    <link rel="stylesheet" href="css/style.css">
+  <!-- own CSS -->
+  <link rel="stylesheet" href="css/style.css">
 
-    <title>NZ Tourism Accommodation</title>
-  </head>
-  <body>
-
-
-<!-- SECTION ONE -  LANDING PAGE -->
-    <div class="background-carousel">
-        <div class="container-fluid justify-content-center pt-5">
-          <img class="brand-size text-center mt-5" src="images/assets/logos/brand.svg">
-          <h1 class="text-white text-center mt-5 resize-font">Find your perfect place</h1>
-          <p class="text-white text-center mb-5 quotes">New Zealand holiday house, hotel, hostel and motel accommodation</p>
-
-          <div id="sec1" class="text-center">
-             <button id="explore" class="btn btn-lg my-2 my-sm-0 text-white bg-primary mt-5" type="button">Explore</button>
-          </div>
+  <title>NZ Tourism Accommodation</title>
+</head>
+<body>
 
 
-          <div id="searchForm">
-            <form class="container align-items-center">
-              <div class="col-sm-12">
-                <input type="text" class="form-control" placeholder="Location">
-              </div>
-               <div class="form-row">
-                 <div class="col-sm-6">
-                   <!-- <label for="startDate" class="h3 mr-2 mb-5">Start Date: </label> -->
-                   <input type="text" id="startDate" placeholder="Start Date">
-                 </div>
-                 <div class="col-sm-6">
-                   <!-- <label for="endDate" class="h3 mr-2 mb-5">End Date: </label> -->
-                   <input type="text" id="endDate" placeholder="End Date">
-                 </div>
-                 <div class="form-row">
-                 <div class="col-sm-6">
-                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    <option selected>Guest</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
-                 </div>
-                 <div class="col-sm-6">
-                   <button id="search" class="btn btn-lg my-2 my-sm-0 text-white bg-primary mt-5" type="button">Search</button>
-                 </div>
-               </div>
-            </form>
-          </div>
+  <!-- SECTION ONE -  LANDING PAGE -->
+  <div class="background-carousel">
+    <div class="container-fluid justify-content-center pt-5">
+      <img class="brand-size text-center mt-5" src="images/assets/logos/brand.svg">
+      <h1 class="text-white text-center mt-5 resize-font">Find your perfect place</h1>
+      <p class="text-white text-center mb-5 quotes">New Zealand holiday house, hotel, hostel and motel accommodation</p>
 
-          <div class="row fixed-bottom align-items-center mb-3">
-            <div class="col">
-              <img class="logo-size float-left pl-3" src="images/assets/logos/tourismNZWhite.png">
+      <div id="sec1" class="text-center">
+        <button id="explore" class="btn btn-lg my-2 my-sm-0 text-white bg-primary mt-5" type="button">Explore</button>
+      </div>
+
+
+      <div id="searchBanner" class="mt-4">
+        <form class="form-inline container align-items-center">
+          <!-- <div class="form-group"> -->
+          <select class="custom-select mr-sm-2" id="locationSelect">
+            <option selected>Location</option>
+            <option value="1">Auckland</option>
+            <option value="2">Wellington</option>
+            <option value="3">Christchurch</option>
+            <option value="3">Queenstown</option>
+          </select>
+          <!-- </div> -->
+
+          <div class="form-row">
+            <div class="col-sm-6">
+              <input type="text" id="startDate" placeholder="Check-in">
             </div>
-            <div class="col">
-              <img class="icon-size float-right pr-4" src="images/assets/icons/info.svg">
+            <div class="col-sm-6">
+              <input type="text" id="endDate" placeholder="Check-out">
             </div>
           </div>
 
 
-        </div>
+
+          <select class="custom-select mr-sm-2" id="guestSelect">
+            <option selected>Guest</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+
+
+          <button id="search" class="btn btn-lg my-2 my-sm-0 text-white bg-primary mt-5" type="button">Search</button>
+          <!-- </div> -->
+        </form>
+      </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
-    <script src="js/jquery.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
-    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script> -->
+    <!-- bottom - footer -->
+    <div class="row fixed-bottom align-items-center mb-3">
+      <div class="col">
+        <img class="logo-size float-left pl-3" src="images/assets/logos/tourismNZWhite.png">
+      </div>
+      <div class="col">
+        <img class="icon-size float-right pr-4" src="images/assets/icons/info.svg">
+      </div>
+    </div>
 
-    <!-- jquery-UI script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
 
-    <!-- link to own javascript file -->
-    <script src="js/script.js"></script>
-  </body>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+  <script src="js/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+  <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script> -->
+
+  <!-- jquery-UI script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+
+  <!-- link to own javascript file -->
+  <script src="js/script.js"></script>
+</body>
 </html>

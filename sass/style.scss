@@ -1,6 +1,15 @@
 $primary: #29ade5;
 $h1-font-size: 2rem;
 $font-family-sans-serif: 'Josefin Sans', sans-serif;
+
+
+
+@font-face{
+  font-family: 'Pure Pakati';
+  src: url(../images/assets/fonts/pure-pakati/PurePakati-Regular.otf);
+}
+
+
 // Include parts of Bootstrap
 
 // Required
@@ -27,6 +36,7 @@ $font-family-sans-serif: 'Josefin Sans', sans-serif;
 body {
 
 }
+
 
 
 h1, p {
