@@ -7,8 +7,8 @@
   <!-- responsive -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- social media icons - from fontawesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- icons from fontawesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <!-- favicon -->
   <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="images/assets/logos/SilverFern.gif">
@@ -24,75 +24,157 @@
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
 
-  <!-- own CSS -->
+  <!-- customised own CSS -->
   <link rel="stylesheet" href="css/style.css">
 
   <title>NZ Tourism Accommodation</title>
 </head>
 <body>
 
-
   <!-- SECTION ONE -  LANDING PAGE -->
-  <div class="background-carousel">
-    <div class="container-fluid justify-content-center pt-5">
-      <img class="brand-size text-center mt-5" src="images/assets/logos/brand.svg">
-      <h1 class="text-white text-center mt-5 resize-font">Find your perfect place</h1>
-      <p class="text-white text-center mb-5 quotes">New Zealand holiday house, hotel, hostel and motel accommodation</p>
+  <div id="landing" class="background-carousel">
+    <div class="container-fluid justify-content-center pt-5 ">
+      <img class="brand-size text-center mt-5" src="images/assets/logos/brand.svg" alt="newZealand">
+      <h1 class="text-white text-center mt-5 resize-font font-weight-bold">Find your perfect place</h1>
+      <p class="text-white text-center mb-5 pt-5 quotes">New Zealand holiday house, hotel, hostel and motel accommodation</p>
 
       <div id="sec1" class="text-center">
         <button id="explore" class="btn btn-lg my-2 my-sm-0 text-white bg-primary mt-5" type="button">Explore</button>
       </div>
 
-
-      <div id="searchBanner" class="mt-4">
-        <form class="form-inline container align-items-center">
-          <!-- <div class="form-group"> -->
-          <select class="custom-select mr-sm-2" id="locationSelect">
-            <option selected>Location</option>
-            <option value="1">Auckland</option>
-            <option value="2">Wellington</option>
-            <option value="3">Christchurch</option>
-            <option value="3">Queenstown</option>
-          </select>
-          <!-- </div> -->
-
-          <div class="form-row">
-            <div class="col-sm-6">
-              <input type="text" id="startDate" placeholder="Check-in">
+      <!-- Search Form -->
+      <div id="searchBanner" class="mt-4 py-3 mx-auto banner-border">
+        <form class="container align-items-center justify-content-cneter">
+          <div class="form-row px-2 align-items-center">
+            <div class="col-sm-12 col-lg-2 mb-2">
+              <select id="locationSelect" class="form-control">
+                <option selected>Location</option>
+                <option value="1">Auckland</option>
+                <option value="2">Wellington</option>
+                <option value="3">Christchurch</option>
+                <option value="3">Queenstown</option>
+              </select>
             </div>
-            <div class="col-sm-6">
-              <input type="text" id="endDate" placeholder="Check-out">
+
+            <div class="col-sm-12 col-lg-2 mb-2">
+              <input class="form-control" type="text" id="startDate" placeholder="Check-in">
+            </div>
+            <div class="col-sm-12 col-lg-2 mb-2">
+              <input class="form-control" type="text" id="endDate" placeholder="Check-out">
+            </div>
+
+            <div class="col-sm-12 col-lg-2 mb-2">
+              <select id="guestSelect" class="form-control mr-sm-2">
+                <option selected>Guest</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+
+            <div class="col-sm-12 col-lg-4 mb-2">
+              <button id="search" class="btn btn-lg text-white bg-primary w-100" type="button">Search</button>
             </div>
           </div>
-
-
-
-          <select class="custom-select mr-sm-2" id="guestSelect">
-            <option selected>Guest</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-
-
-          <button id="search" class="btn btn-lg my-2 my-sm-0 text-white bg-primary mt-5" type="button">Search</button>
-          <!-- </div> -->
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
 
+
+
+    <!-- SECTION TWO -  ACCOMMODATION OPTIONS -->
+    <div class="container" id="accommodation">
+
+    </div>
+
+
+</div>
     <!-- bottom - footer -->
-    <div class="row fixed-bottom align-items-center mb-3">
+    <footer class="row fixed-bottom align-items-center mb-3">
       <div class="col">
-        <img class="logo-size float-left pl-3" src="images/assets/logos/tourismNZWhite.png">
+        <img class="logo-size float-left pl-3 mr-5" src="images/assets/logos/tourismNZWhite.png" alt="logo">
+
+        <div class="social-desktop mt-3">
+          <span class="px-3"><a href="https://twitter.com/purenewzealand" target="_blank"><i class="fab fa-twitter"></i></a></span>
+          <span class="px-3"><a href="https://www.instagram.com/purenewzealand/" target="_blank"><i class="fab fa-instagram"></i></a></span>
+          <span class="px-3"><a href="https://www.facebook.com/purenewzealand" target="_blank"><i class="fab fa-facebook-f"></i></a></span>
+          <span class="px-3"><a href="https://www.youtube.com/purenewzealand" target="_blank"><i class="fab fa-youtube"></i></a></span>
+        </div>
       </div>
+
+      <!-- <div class="col-lg-6 social-desktop"> -->
+        <!-- <ul class-"social-icons d-inline">
+          <li><a href="https://twitter.com/purenewzealand" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.instagram.com/purenewzealand/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="https://www.facebook.com/purenewzealand" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
+          <li><a href="https://www.youtube.com/purenewzealand" target="_blank"><i class="fa fa-youtube"></i></a></li>
+        </ul> -->
+
+
+
+      <!-- </div> -->
+
       <div class="col">
-        <img class="icon-size float-right pr-4" src="images/assets/icons/info.svg">
+        <img id="appInfo" class="icon-size float-right pr-4" src="images/assets/icons/info.svg" alt="Information">
+      </div>
+    </footer>
+
+    <!-- modal location -->
+    <div class="location-modal">
+      <div class="closeBar text-right display-4">
+      &times;
+      </div>
+      <div id="modalContent" class="animate"></div>
+    </div>
+
+
+    <!-- modal information -->
+    <div class="info-modal">
+      <div class="animate mt-5">
+        <div class="bg-dark mx-3 py-1">
+          <p class="text-white pl-3 pt-3 font-size-sm">INFORMATION</p>
+          <div class="closeBar text-right text-white">
+            &times;
+          </div>
+        </div>
+        <div id="modalContentInfo" class="mx-3 p-3">
+          <p>Kia Ora! Welcome to New Zealand.</p>
+          <p>This app helps you to find and book accommdation within New Zealand that fits within your desired needs.</p>
+          <p></br>FEATURES:</p>
+          <ol class="pl-3">
+            <li>.Choose your destination for booking.</li>
+            <li>Enter date travel and no of guests.</li>
+            <li>Filter accomodation types that suit your needs.</li>
+            <li>Choose meal package options if prefered.</li>
+            <li>Sort the accomodation by price.</li>
+            <li>Map view of a list of accomodation available.</li>
+            <li>Summary of estimated total price.</li>
+            <li>Reserve your accomodation through link to approprate website.</li>
+          </ol>
+        </div>
       </div>
     </div>
 
 
-  </div>
+    <!-- SECTION TWO - ACCOMMODATION OPTIONS  -->
+    <div id="options">
+
+    </div>
+
+    <!-- SECTION THREE - ACCOMMODATION LIST  -->
+    <div id="sec3">
+      <div class="bg-dark py-3 text-center">
+        <i class="fas fa-home text-white pr-3" id="backToHome"></i>
+        <span class="text-white font-size-sm">ACCOMMODATION</span>
+      </div>
+      <div id="banner"></div>
+      <div id="result" class="row mt-5">
+      </div>
+    </div>
+
+
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
@@ -106,7 +188,7 @@
   <!-- jquery-UI script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
 
-  <!-- link to own javascript file -->
+  <!-- customised own JS script -->
   <script src="js/script.js"></script>
 </body>
 </html>
