@@ -145,7 +145,7 @@ var accommodation = [
     longitude : 174.771544,
     meals: {breakfast:20, lunch:35, dinner: 35, all:80, noMeal: 0},
     photo1: 'images/accommodation/capital1.jpg',
-    photo2: 'images/accommodation/capital2.jpg',
+    photo2: 'images/accommodation/capital2.png',
     photo3: 'images/accommodation/capital3.jpg',
     photoCity: 'images/locations/Wellington1.jpg',
     website: 'https://www.capitalview.co.nz/'
@@ -420,17 +420,18 @@ $(document).ready(function(){
 
 });
 
-
+// move from landing page to accommdation options
   $('#search').click(function(){
     $('#accommodation').show();
     $('#sec1').hide();
   });
 
-
+// open modal for app information
   $('#appInfo').click(function(){
     $('.info-modal').show();
   });
 
+// close modal
   $('.closeBar').click(function(){
     $('.info-modal').hide();
 
