@@ -420,11 +420,7 @@ $(document).ready(function(){
 
 });
 
-// move from landing page to accommdation options
-  $('#search').click(function(){
-    $('#accommodation').show();
-    $('#sec1').hide();
-  });
+
 
 // open modal for app information
   $('#appInfo').click(function(){
@@ -436,6 +432,9 @@ $(document).ready(function(){
     $('.info-modal').hide();
 
   });
+
+
+
 
 
   // date calculation
@@ -470,18 +469,19 @@ $('#startDate').datepicker({
 
 
 function dateDiff(){
-  var start = $(startDate).datepicker('getDate');
-  var end = $(endDate).datepicker('getDate');
+  var start = $('#startDate').datepicker('getDate');
+  var end = $('#endDate').datepicker('getDate');
   // conver miliseconds, then to seconds, then to minutes, then to hours and last days
   var days = (end - start)/1000/60/60/24; // user readable format
 
-  document.getElementById('days').value = days;
-  return;
+  // document.getElementById('days').value = days;
+  console.log(days);
+  return days;
 }
 
-$('#calcDate').click(function(){
-  dateDiff();
-});
+// $('#calcDate').click(function(){
+//   dateDiff();
+// });
 
 
 var id = 101;
@@ -564,17 +564,17 @@ function displayAccommodation(k) {
 };
 
 
-function displayBanner(k){
-  document.getElementById('banner').innerHTML
-  =+ '<img src=" ' + accommodation[k].photoCity + ' " class="img-size" alt="background">'
-  + '<p class"text-white"> Your trip is 3 days in Auckland for 2 guests from 01/12/19 to 03/12/19. </p>';
-}
+// function displayBanner(k){
+//   document.getElementById('banner').innerHTML
+//   =+ '<img src=" ' + accommodation[k].photoCity + ' " class="img-size" alt="background">'
+//   + '<p class"text-white"> Your trip is 3 days in Auckland for 2 guests from 01/12/19 to 03/12/19. </p>';
+// }
 
 // function for display all books
 function allAccommodation(){
   document.getElementById('result').innerHTML = '';
   for(var i=0; i< accommodation.length; i++){
-    displayBanner(i);
+    // displayBanner(i);
     displayAccommodation(i);
     //modal();
 
@@ -582,6 +582,85 @@ function allAccommodation(){
   }
 }
 
+
+// move from landing page to accommdation options
 document.getElementById('search').addEventListener('click',function(){
-  allAccommodation();
+  $('#accommodation').show();
+  $('#sec1').hide();
+  validate();
+  sort();
+  // allAccommodation();
 });
+
+
+
+// function sortLocation(){
+//   // document.getElementById('accommodation').innerHTML = '';
+//   var x = document.getElementById('guestSelect').value;
+//   console.log(typeof(x));
+//
+//   switch (x){
+//     case '1':
+//     break;
+//
+//     case '2':
+//     break;
+//
+//     case '3':
+//     break;
+//
+//     case '4':
+//     break;
+//
+//   }
+//
+// }
+
+function sort(){
+
+var location = document.getElementById('locationSelect');
+var guest = document.getElementById('guestSelect');
+var chosenLocation = location.options[location.selectedIndex].text;
+var chosenGuest = guest.options[guest.selectedIndex].text;
+var days = dateDiff();
+
+console.log(chosenLocation, chosenGuest, days);
+
+document.getElementById('result').innerHTML = '';
+for(var i=0; i< accommodation.length; i++){
+  if ((chosenLocation === accommodation[i].location)
+       && (chosenGuest >= accommodation[i].minPeople) && (chosenGuest <= accommodation[i].maxPeople)
+       && (days >= accommodation[i].minNight) && (days <= accommodation[i].maxNight)){
+    displayAccommodation(i);
+  }
+
+}
+  console.log(chosenLocation, chosenGuest, days);
+}
+
+
+// check required field, validate the form is not empty
+function validate() {
+  var location = document.getElementById('locationSelect');
+  var chosenLocation = location.options[location.selectedIndex].text;
+  var guest = document.getElementById('guestSelect');
+  var chosenGuest = guest.options[guest.selectedIndex].text;
+
+
+  if ((chosenLocation === 'Select Location') || (chosenGuest === "Guest")){
+     //alert("Sorry! Please enter choose your location!");
+    swal("Sorry!", "All field are required. Please choose your location, date and guest!", "error");
+  }
+  // else if (chosenGuest === "Guest"){
+  //   swal("Sorry!", "Please select number of guest!", "error");
+  // } else if ((chosenLocation === 'Select Location') && (chosenGuest === "Guest")){
+  //   swal("Sorry!", "Please choose your location  and select number of guest!", "error");
+  // }
+
+}
+
+
+// function checkAccommodationType(){
+//   document.getElementById('result').innerHTML
+//
+// }
