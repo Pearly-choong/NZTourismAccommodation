@@ -477,7 +477,7 @@ function dateDiff(){
   // document.getElementById('days').value = days;
   console.log(days);
   return days;
-}
+};
 
 // $('#calcDate').click(function(){
 //   dateDiff();
@@ -499,13 +499,13 @@ function displayAccommodation(k) {
   +        '</ol>'
   +        '<div class="carousel-inner">'
   +           '<div class="carousel-item active">'
-  +             '<img src=" ' + accommodation[k].photo1 + ' " class="d-block img-size" alt="photo1">'
+  +             '<img src=" ' + accommodation[k].photo1 + ' " class="d-block img-size" alt="photo1"/>'
   +           '</div>'
   +           '<div class="carousel-item">'
-  +             '<img src=" ' + accommodation[k].photo2 + ' "class="d-block img-size" alt="photo2">'
+  +             '<img src=" ' + accommodation[k].photo2 + ' "class="d-block img-size" alt="photo2"/>'
   +           '</div>'
   +           '<div class="carousel-item">'
-  +             '<img src=" ' + accommodation[k].photo3 + ' " class="d-block img-size" alt="photo3">'
+  +             '<img src=" ' + accommodation[k].photo3 + ' " class="d-block img-size" alt="photo3"/>'
   +           '</div>'
   +         '</div>'
   +         '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'
@@ -580,7 +580,7 @@ function allAccommodation(){
 
      id++;
   }
-}
+};
 
 
 // move from landing page to accommdation options
@@ -588,6 +588,7 @@ document.getElementById('search').addEventListener('click',function(){
   $('#accommodation').show();
   $('#sec1').hide();
   validate();
+  displayType();
   sort();
   // allAccommodation();
 });
@@ -634,9 +635,9 @@ for(var i=0; i< accommodation.length; i++){
     displayAccommodation(i);
   }
 
-}
+  }
   console.log(chosenLocation, chosenGuest, days);
-}
+};
 
 
 // check required field, validate the form is not empty
@@ -657,10 +658,30 @@ function validate() {
   //   swal("Sorry!", "Please choose your location  and select number of guest!", "error");
   // }
 
-}
+};
 
 
-// function checkAccommodationType(){
-//   document.getElementById('result').innerHTML
-//
-// }
+function displayType(){
+  var location = document.getElementById('locationSelect');
+  var chosenLocation = location.options[location.selectedIndex].text;
+  var guest = document.getElementById('guestSelect');
+  var chosenGuest = guest.options[guest.selectedIndex].text;
+  var days = dateDiff();
+
+
+  document.getElementById('options').innerHTML
+  =+'<div class="container">'
+  +   '<p>Your Choices: </p>';
+  +   '<p>' + parseInt(chosenGuest) + ' guest/s ' + parseInt(days) + ' night/s, ' + parseInt(chosenLocation) + '</p>'
+  +   '<p> Available accommodation types. Please choose your preference.</p>'
+  +   '</br>'
+  +   '<div class="row">'
+  +     '<div class="col">'
+  +       '<img class="acc-Img img-thumbnail" src = "images/accommodation/hotel.jpg alt="Hotel">'
+  +       '<button id="hotel" class="btn btn-lg text-white bg-primary" type="button">Hotel</button>'
+  +     '</div>'
+  +   '</div>'
+  + '</div>'
+
+console.log(chosenGuest, days, chosenLocation);
+};
