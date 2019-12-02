@@ -474,6 +474,7 @@ function dateDiff(){
   // conver miliseconds, then to seconds, then to minutes, then to hours and last days
   var days = (end - start)/1000/60/60/24; // user readable format
 
+
   // document.getElementById('days').value = days;
   console.log(days);
   return days;
@@ -499,7 +500,7 @@ function displayAccommodation(k) {
   +        '</ol>'
   +        '<div class="carousel-inner">'
   +           '<div class="carousel-item active">'
-  +             '<img src=" ' + accommodation[k].photo1 + ' " class="d-block img-size" alt="photo1"/>'
+  +             '<img id=" ' + accommodation[k].id + 'src=" ' + accommodation[k].photo1 + ' " class="d-block img-size my-accommodation" alt="photo1"/>'
   +           '</div>'
   +           '<div class="carousel-item">'
   +             '<img src=" ' + accommodation[k].photo2 + ' "class="d-block img-size" alt="photo2"/>'
@@ -517,7 +518,6 @@ function displayAccommodation(k) {
   +           '<span class="sr-only">Next</span>'
   +         '</a>'
   +        '</div>'
-  // +      '<img class="img-size" src=" ' + accommodation[k].photo1 + ' " alt="Accommodation"/>'
   +         '<div class="card-body">'
   +           '<div class="row">'
   +             '<div class="col">'
@@ -556,7 +556,7 @@ function displayAccommodation(k) {
   +               '<p class="text-right"> $ total</p>'
   +             '</div>'
   +            '</div>'
-  +           '</br>  <button id="search" class="btn btn-lg text-white bg-primary w-100" type="button">View More</button>'
+  +           '</br> <button id="viewMore" class="btn btn-lg text-white bg-primary w-100" type="button">View More</button>'
   +         '</div>'
   +     '</div>'
   +   '</div>';
@@ -570,7 +570,7 @@ function displayAccommodation(k) {
 //   + '<p class"text-white"> Your trip is 3 days in Auckland for 2 guests from 01/12/19 to 03/12/19. </p>';
 // }
 
-// function for display all books
+// display all accommodation
 function allAccommodation(){
   document.getElementById('result').innerHTML = '';
   for(var i=0; i< accommodation.length; i++){
@@ -646,11 +646,12 @@ function validate() {
   var chosenLocation = location.options[location.selectedIndex].text;
   var guest = document.getElementById('guestSelect');
   var chosenGuest = guest.options[guest.selectedIndex].text;
+  var start = $('#startDate').datepicker('getDate');
+  var end = $('#endDate').datepicker('getDate');
 
-
-  if ((chosenLocation === 'Select Location') || (chosenGuest === "Guest")){
+  if ((chosenLocation === 'Select Location') || (chosenGuest === "Guest") || (start === null) || (end === null)){
      //alert("Sorry! Please enter choose your location!");
-    swal("Sorry!", "All field are required. Please choose your location, date and guest!", "error");
+    swal("Sorry!", "All field are required. Please select your location, date and guest!", "error");
   }
   // else if (chosenGuest === "Guest"){
   //   swal("Sorry!", "Please select number of guest!", "error");
@@ -685,3 +686,267 @@ function displayType(){
 
 console.log(chosenGuest, days, chosenLocation);
 };
+
+
+
+// function to filter Modal display content
+function filterModal(data){
+
+  var days = dateDiff();
+
+    console.log('hotel');
+     document.getElementById('result').innerHTML = '';
+     var k=0;
+     //var romanceId = 101;
+     for( k=0; k< accommodation.length; k++){
+       if(accommodation[k].type.toLowerCase() === data){
+
+         displayAccommodation(k);
+
+
+
+        $('.my-accommodation').on('click', function(){
+            $('.my-modal').show();
+          console.log(this.id);
+           document.getElementById('modalContent').innerHTML = '';
+           for (var i=0; i < accommodation.length; i++){
+              console.log(accommodation[i].type.toLowerCase());
+              console.log(this.id, accommodation[i].id);
+             if ((accommodation[i].type.toLowerCase().trim() === data) && (this.id.trim() === type[i].id.trim())) {
+               console.log('modal content');
+
+               document.getElementById('modalContent').innerHTML
+               += '<div class="text-center ml-auto mr-auto mt-5 px-4 col-sm-12 col-lg-4 ml-5">'
+               +    '<div class="card w-100" style="width: 25rem;">'
+               +      '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">'
+               +        '<ol class="carousel-indicators">'
+               +           '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>'
+               +           '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>'
+               +           '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li> '
+               +        '</ol>'
+               +        '<div class="carousel-inner">'
+               +           '<div class="carousel-item active">'
+               +             '<img src=" ' + accommodation[k].photo1 + ' " class="d-block img-size my-accommodation" alt="photo1"/>'
+               +           '</div>'
+               +           '<div class="carousel-item">'
+               +             '<img src=" ' + accommodation[k].photo2 + ' "class="d-block img-size" alt="photo2"/>'
+               +           '</div>'
+               +           '<div class="carousel-item">'
+               +             '<img src=" ' + accommodation[k].photo3 + ' " class="d-block img-size" alt="photo3"/>'
+               +           '</div>'
+               +         '</div>'
+               +         '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'
+               +           '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'
+               +           '<span class="sr-only">Previous</span>'
+               +         '</a>'
+               +         '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">'
+               +           '<span class="carousel-control-next-icon" aria-hidden="true"></span>'
+               +           '<span class="sr-only">Next</span>'
+               +         '</a>'
+               +        '</div>'
+               +         '<div class="card-body">'
+               +           '<div class="row">'
+               +             '<div class="col">'
+               +               '<p class="text-center border border-dark">' + accommodation[k].type + ' </p>'
+               +             '</div>'
+               +             '<div class="col">'
+               +              '<i class="d-inline pr-2 fas fa-users"></i>'
+               +              '<p class="text-center d-inline">' + accommodation[k].maxPeople + '</p>'
+               +             '</div>'
+               +             '<div class="col">'
+               +               '<i class="d-inline pr-2 fas fa-bed"></i>'
+               +               '<p class="d-inline text-center">' + accommodation[k].bed + '</p>'
+               +             '</div>'
+               +             '<div class="col">'
+               +               '<i class="d-inline pr-2 fas fa-wifi"></i>'
+               +               '<p class="d-inline text-center">' + accommodation[k].facilities + '</p>'
+               +             '</div>'
+               +             '<div class="col">'
+               +               '<i class="d-inline pr-2 text-warning fas fa-star"></i>'
+               +               '<p class="d-inline text-center">' + accommodation[k].rating + '</p>'
+               +             '</div>'
+               +           '</div>'
+               +           '<div class="row">'
+               +             '<p>' + accommodation[k].description + '</p>'
+               +            '</div>'
+               +            '<div class="row">'
+               +             '<div class="col">'
+               +               '<ul>'
+               +                 '<li class="font-weight-bold">Check-in Date</li>'
+               +                 '<li> 12/13/17 </li>'
+               +                '</ul>'
+               +             '</div>'
+               +             '<div class="col">'
+               +               '<ul>'
+               +                 '<li class="font-weight-bold">Check-out Date</li>'
+               +                 '<li> 12/13/17 </li>'
+               +                '</ul>'
+               +             '</div>'
+               +             '<div class="col">'
+               +               '<ul>'
+               +                 '<li class="font-weight-bold">Guests</li>'
+               +                 '<li> 2 people </li>'
+               +                '</ul>'
+               +             '</div>'
+               +            '</div>'
+               +            '<div class="row">'
+               +              '<div class="col">'
+               +                '<p class="text-right"> $ ' + accommodation[k].price + ' / night</p>'
+               +              '</div>'
+               +              '<div class="col">'
+               +                '<p class="text-right"> $ ' + accommodation[k].price + ' X ' + days + ' night/s</p>'
+               +              '</div>'
+               +              '<div class="col">'
+               +                '<p class="text-right"> $ total </p>'
+               +              '</div>'
+               +            '</div>'
+               +           '</br> <label for="mealSelection">Optional Meal Package</label>'
+               +           '<select id="mealSelect" class="form-control">'
+               +             '<option selected>Choose Meal Options</option>'
+               +             '<option value="breakfast">Breakfast $20</option>'
+               +             '<option value="lunch">Lunch $35</option>'
+               +             '<option value="dinner">Dinner $35</option>'
+               +             '<option value="all">All $80</option>'
+               +             '<option value="noMeal">No Meal</option>'
+               +            '<select>'
+               +         '</div>'
+               +     '</div>'
+               +   '</div>';
+             };
+           }
+    });
+
+  }
+  }
+
+}
+
+// function to open modal
+ function modal(){
+   console.log('modal');
+  $('.my-accommodation').on('click', function(){
+
+   console.log(this.id);
+   $('.my-modal').show();
+   document.getElementById('modalContent').innerHTML = '';
+
+   modalContent(this.id);
+
+ });
+ }
+
+
+ // function to open modal content
+ function modalContent(thisId){
+   console.log(thisId)
+   // $('.myModal').show();
+   for (var i=0; i < accommodation.length; i++){
+     console.log(thisId, accommodation[i].id);
+     if(thisId.trim() === accommodation[i].id.trim()){
+   document.getElementById('modalContent').innerHTML
+   += '<div class="text-center ml-auto mr-auto mt-5 px-4 col-sm-12 col-lg-4 ml-5">'
+   +    '<div class="card w-100" style="width: 25rem;">'
+   +      '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">'
+   +        '<ol class="carousel-indicators">'
+   +           '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>'
+   +           '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>'
+   +           '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li> '
+   +        '</ol>'
+   +        '<div class="carousel-inner">'
+   +           '<div class="carousel-item active">'
+   +             '<img src=" ' + accommodation[k].photo1 + ' " class="d-block img-size my-accommodation" alt="photo1"/>'
+   +           '</div>'
+   +           '<div class="carousel-item">'
+   +             '<img src=" ' + accommodation[k].photo2 + ' "class="d-block img-size" alt="photo2"/>'
+   +           '</div>'
+   +           '<div class="carousel-item">'
+   +             '<img src=" ' + accommodation[k].photo3 + ' " class="d-block img-size" alt="photo3"/>'
+   +           '</div>'
+   +         '</div>'
+   +         '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'
+   +           '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'
+   +           '<span class="sr-only">Previous</span>'
+   +         '</a>'
+   +         '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">'
+   +           '<span class="carousel-control-next-icon" aria-hidden="true"></span>'
+   +           '<span class="sr-only">Next</span>'
+   +         '</a>'
+   +        '</div>'
+   +         '<div class="card-body">'
+   +           '<div class="row">'
+   +             '<div class="col">'
+   +               '<p class="text-center border border-dark">' + accommodation[k].type + ' </p>'
+   +             '</div>'
+   +             '<div class="col">'
+   +              '<i class="d-inline pr-2 fas fa-users"></i>'
+   +              '<p class="text-center d-inline">' + accommodation[k].maxPeople + '</p>'
+   +             '</div>'
+   +             '<div class="col">'
+   +               '<i class="d-inline pr-2 fas fa-bed"></i>'
+   +               '<p class="d-inline text-center">' + accommodation[k].bed + '</p>'
+   +             '</div>'
+   +             '<div class="col">'
+   +               '<i class="d-inline pr-2 fas fa-wifi"></i>'
+   +               '<p class="d-inline text-center">' + accommodation[k].facilities + '</p>'
+   +             '</div>'
+   +             '<div class="col">'
+   +               '<i class="d-inline pr-2 text-warning fas fa-star"></i>'
+   +               '<p class="d-inline text-center">' + accommodation[k].rating + '</p>'
+   +             '</div>'
+   +           '</div>'
+   +           '<div class="row">'
+   +             '<p>' + accommodation[k].description + '</p>'
+   +            '</div>'
+   +            '<div class="row">'
+   +             '<div class="col">'
+   +               '<ul>'
+   +                 '<li class="font-weight-bold">Check-in Date</li>'
+   +                 '<li> 12/13/17 </li>'
+   +                '</ul>'
+   +             '</div>'
+   +             '<div class="col">'
+   +               '<ul>'
+   +                 '<li class="font-weight-bold">Check-out Date</li>'
+   +                 '<li> 12/13/17 </li>'
+   +                '</ul>'
+   +             '</div>'
+   +             '<div class="col">'
+   +               '<ul>'
+   +                 '<li class="font-weight-bold">Guests</li>'
+   +                 '<li> 2 people </li>'
+   +                '</ul>'
+   +             '</div>'
+   +            '</div>'
+   +            '<div class="row">'
+   +              '<div class="col">'
+   +                '<p class="text-right"> $ ' + accommodation[k].price + ' / night</p>'
+   +              '</div>'
+   +              '<div class="col">'
+   +                '<p class="text-right"> $ ' + accommodation[k].price + ' X ' + days + ' night/s</p>'
+   +              '</div>'
+   +              '<div class="col">'
+   +                '<p class="text-right"> $ total </p>'
+   +              '</div>'
+   +            '</div>'
+   +           '</br> <label for="mealSelection">Optional Meal Package</label>'
+   +           '<select id="mealSelect" class="form-control">'
+   +             '<option selected>Choose Meal Options</option>'
+   +             '<option value="breakfast">Breakfast $20</option>'
+   +             '<option value="lunch">Lunch $35</option>'
+   +             '<option value="dinner">Dinner $35</option>'
+   +             '<option value="all">All $80</option>'
+   +             '<option value="noMeal">No Meal</option>'
+   +            '<select>'
+   +         '</div>'
+   +     '</div>'
+   +   '</div>';
+ }
+
+ }
+ }
+
+ // display Design genre books
+ document.getElementById('showHotel').addEventListener('click',function(){
+   filterModal('Hotel');
+
+ });
