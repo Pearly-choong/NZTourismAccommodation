@@ -115,7 +115,7 @@ p, ol {
   top: 7%;
 }
 
-#modalContentInfo, #modalContent{
+#modalContentInfo{
   background-color: white;
   // margin-left: auto;
   // margin-right: auto;
@@ -125,6 +125,11 @@ p, ol {
   // margin-top: 10%;
 }
 
+
+.modal-size {
+  width: 100%;
+  height: auto;
+}
 
 .img-size {
   width: 550px;
