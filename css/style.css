@@ -4166,7 +4166,7 @@ p, ol {
   color: black; }
 
 /*  style the modal screen */
-.location-modal, .info-modal {
+.location-modal, .info-modal, #myModal {
   display: none;
   position: fixed;
   background-color: white;
@@ -4185,7 +4185,7 @@ p, ol {
   right: 12%;
   top: 7%; }
 
-#modalContent, #modalContentInfo {
+#modalContentInfo, #modalContent {
   background-color: white; }
 
 .img-size {
