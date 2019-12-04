@@ -35,16 +35,16 @@
   <div id="landing" class="background-carousel">
     <div class="container-fluid justify-content-center pt-5 ">
       <img class="brand-size text-center mt-5" src="images/assets/logos/brand.svg" alt="newZealand">
-      <h1 class="text-white text-center mt-5 resize-font font-weight-bold">Find your perfect place</h1>
+      <h1 class="text-white text-center mt-5 text-break resize-font">Find your perfect place</h1>
       <p class="text-white text-center mb-5 pt-5 quotes">New Zealand holiday house, hotel, hostel and motel accommodation</p>
 
       <div id="sec1" class="text-center">
-        <button id="explore" class="btn btn-lg my-2 my-sm-0 text-white bg-primary mt-5" type="button">Explore</button>
+        <button id="explore" class="btn btn-lg my-2 my-sm-0 text-white bg-primary mt-5 px-5" type="button">Explore</button>
       </div>
 
       <!-- Search Form -->
       <div id="searchBanner" class="mt-4 py-3 mx-auto banner-border">
-        <form class="container align-items-center justify-content-cneter">
+        <form class="container align-items-center justify-content-center">
           <div class="form-row px-2 align-items-center">
             <div class="col-sm-12 col-lg-2 mb-2">
               <select name="group" id="locationSelect" class="form-control">
@@ -77,16 +77,23 @@
               <button id="search" class="btn btn-lg text-white bg-primary w-100" type="button">Search</button>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
 
-
-
-
+    <!-- <select id="mealSelection" class="custom-select">
+      <option selected>Choose Meal Options</option>
+      <option value="breakfast">Breakfast $20</option>
+      <option value="lunch">Lunch $35</option>
+      <option value="dinner">Dinner $35</option>
+      <option value="all">All $80</option>
+      <option value="none">No Meal</option>
+    </select>
+     <div id="input" class="text-white display-4 pb-5"></div>
+  </div> -->
 
     <!-- bottom - footer -->
-    <footer class="row fixed-bottom align-items-center mb-3">
+    <footer class="row fixed-bottom align-items-center py-3">
       <div class="col">
         <img class="logo-size float-left pl-3 mr-5" src="images/assets/logos/tourismNZWhite.png" alt="logo">
 
@@ -97,36 +104,32 @@
           <span class="px-3"><a href="https://www.youtube.com/purenewzealand" target="_blank"><i class="fab fa-youtube"></i></a></span>
         </div>
       </div>
-
-
       <div class="col">
-        <img id="appInfo" class="icon-size float-right pr-4" src="images/assets/icons/info.svg" alt="Information">
+        <img id="appInfo" class="icon-size float-right pr-4" src="images/assets/icons/info.svg" alt="Information" data-toggle="modal" data-target="#infoModal">
       </div>
     </footer>
 </div>
 
 
-    <!-- modal location -->
-    <div class="location-modal">
-      <div class="close-bar text-right display-4">
-      &times;
-      </div>
-      <div id="modalContent" class="animate"></div>
-    </div>
 
 
-    <!-- modal app information -->
-    <div class="info-modal">
-      <div class="animate mt-5 desktop-border">
-        <div class="bg-dark mx-3 py-1">
-          <p class="text-white pl-3 pt-3 font-size-sm">INFORMATION</p>
-          <div class="close-bar text-right text-white">
-            &times;
-          </div>
+
+
+
+
+  <!-- modal app information -->
+   <div id="infoModal" class="modal fade bd-example-modal-lg align-contents-center" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+         <div class="modal-header bg-dark">
+          <h3 class="modal-title text-white text=break display-4 font-size-sm" id="infoTitle">INFORMATION</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div id="modalContentInfo" class="mx-3 p-3">
+        <div id="infoModalBody" class="modal-body">
           <p>Kia Ora! Welcome to New Zealand.</p>
-          <p>This app helps you to find and book accommdation within New Zealand that fits within your desired needs.</p>
+          <p>This web app helps you to find and book accommdation within New Zealand that fits within your desired needs.</p>
           <p></br>FEATURES:</p>
           <ol class="pl-3">
             <li>Choose your destination for booking.</li>
@@ -138,94 +141,85 @@
             <li>Summary of estimated total price.</li>
             <li>Reserve your accomodation through link to approprate website.</li>
           </ol>
+            <img class="map-img float-right" src="images/assets/icons/NZmap.png" alt="nzMap">
         </div>
+        <div class="modal-footer">
+          <ul class="list-unstyled">
+            <li><a href="https://www.newzealand.com/int/accommodation/" target="_blank" class="text-primary">Visit Official NZ Tourism Accommodation Website</a></li>
+            <li class="pt-2"><a href="https://www.newzealand.com/assets/Tourism-NZ/PDFs/cbd7fb84f3/f62081_6.PDF" target="_blank" class="text-primary">Download New Zealand Touring Map</a></li>
+          </ul>
+        </div>
+       </div>
+     </div>
+   </div>
+
+
+
+    <!-- SECTION TWO - ACCOMMODATION LIST  -->
+    <div id="sec2" class="mb-5">
+      <div class="bg-dark py-3 text-center">
+        <i class="fas fa-home text-white pr-3" id="backToHome"></i>
+        <span class="text-white font-size-sm text-break para-Style">ACCOMMODATION</span>
+      </div>
+      <div id="imgBanner" class="text-center"></div>
+      <div class="container-fluid mt-4">
+        <div class="row">
+          <div class="col-sm-12 col-lg-6 mt-3">
+            <div id="summary"></div>
+          </div>
+          <div class="col-sm-12 col-lg-6 align-items-center mt-3">
+            <button type="button" id="showList" class="btn btn-primary">
+              <span><i class="fas fa-th-list pr-2"></i></span>
+              List View
+            </button>
+            <button type="button" id="showMap" class="btn btn-primary mr-3">
+              <span><i class="fas fa-map-marker-alt pr-2"></i></span>
+              Map View
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <!-- <div class="row"> -->
+          <div class="float-left">
+            <!-- sort result -->
+            <div id="result" class="row"></div>
+          </div>
+          <div class="float-right">
+            <!-- google API map -->
+            <div id="map"></div>
+          </div>
+        <!-- </div> -->
       </div>
     </div>
 
-    <!-- Modal -->
-<!-- <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">INFORMATION</h5>
+
+<!-- bd-example-modal-lg -->
+<!-- modal-lg : dialog -->
+
+ <!--  modal accommodation info -->
+<div class="modal fade animate px-auto" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" id="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header bg-dark">
+         <div id="modalTitle"></div>
+        <!-- <h3 class="modal-title text-white text-break" id="modalTitle">Modal title</h3> -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p>Kia Ora! Welcome to New Zealand.</p>
-        <p>This app helps you to find and book accommdation within New Zealand that fits within your desired needs.</p>
-        <p></br>FEATURES:</p>
-        <ol class="pl-3">
-          <li>Choose your destination for booking.</li>
-          <li>Enter date travel and no of guests.</li>
-          <li>Filter accomodation types that suit your needs.</li>
-          <li>Choose meal package options if prefered.</li>
-          <li>Sort the accomodation by price.</li>
-          <li>Map view of a list of accomodation available.</li>
-          <li>Summary of estimated total price.</li>
-          <li>Reserve your accomodation through link to approprate website.</li>
-        </ol>
+      <div id="modalBody" class="modal-body">
       </div>
-    </div>
-  </div>
-</div> -->
+     </div>
+   </div>
+ </div>
 
 
-    <!-- SECTION TWO - ACCOMMODATION OPTIONS  -->
-    <div id="options">
-
-    </div>
-
-    <!-- SECTION THREE - ACCOMMODATION LIST  -->
-    <div id="sec3">
-      <div class="bg-dark py-3 text-center">
-        <i class="fas fa-home text-white pr-3" id="backToHome"></i>
-        <span class="text-white font-size-sm">ACCOMMODATION</span>
-      </div>
-      <div id="banner" class="mt-3 text-center">
-          <div id="summary"></div>
-      </div>
-      <div id="result" class="row">
-      </div>
-    </div>
 
 
-    <!-- Modal screen display for view more accommodation -->
-    <!-- <div id="myModal">
-      <div class="close-bar text-right text-white">
-        &times;
-      </div>
-      <div id="modalContent" class="animate"></div>
-    </div> -->
-
-<!-- ===================================== -->
-    <div class="modal fade w-100 animate" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog modal-size" id="modal-dialog" role="document">
-      </div>
-    </div>
-
-  <!-- <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div id="modalContent" class="modal-content">
-      ...
-    </div>
-  </div>
-</div> -->
 
 
-    <!-- <div class="container">
-      <p>Your Choices: </p>
-      <p>parseInt(chosenGuest) + ' guest/s ' + parseInt(days) + ' night/s, ' + parseInt(chosenLocation) + '</p>
-      <p> Available accommodation types. Please choose your preference.</p>
-      </br>
-      <div class="row">
-        <div class="col">
-          <img class="acc-Img img-thumbnail" src="images/accommodation/hotel.jpg" alt="Hotel"/>
-          <button id="hotel" class="btn btn-lg text-white bg-primary" type="button">Hotel</button>
-        </div>
-      </div>
-    </div> -->
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -242,6 +236,9 @@
 
   <!-- Sweet Alert CDN -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!--  apiKey -->
+   <script src="js/config.json"></script>
 
   <!-- customised own JS script -->
   <script src="js/script.js"></script>

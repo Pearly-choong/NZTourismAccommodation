@@ -1,9 +1,14 @@
+// customised variable from bootstrap
 $primary: #29ade5;
 $h1-font-size: 2rem;
 $font-family-sans-serif: 'Josefin Sans', sans-serif;
 $shadow: 5px 10px 10px #888888;
 $dark: black;
+$body-color: black;
+$grey: #2b2f3a;
 
+
+// import fonts type
 @font-face{
   font-family: 'Pure Pakati';
   src: url(../images/assets/fonts/pure-pakati/PurePakati-Regular.otf);
@@ -24,30 +29,41 @@ $dark: black;
 @import "bootstrap-4.3.1/scss/buttons";
 @import "bootstrap-4.3.1/scss/images";
 @import "bootstrap-4.3.1/scss/jumbotron";
+@import "bootstrap-4.3.1/scss/forms";
+@import "bootstrap-4.3.1/scss/modal";
 
 
-
+// reset
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-ul li {
-  list-style-type: none;
-}
 
-
+// typography
 h1 {
   text-shadow: 2px 2px rgba(0,0,0,0.4);
-  font-family: $font-family-sans-serif;
+  font-family: 'Pure Pakati';
 }
+
+
+h3 {
+  font-family: 'Pure Pakati';
+}
+
 
 p, ol {
   font-family: $font-family-sans-serif;
 }
 
+.para-Style {
+  font-family: 'Pure Pakati';
+  font-size: 2rem;
+}
 
+
+// background image on landing page
 .background-carousel {
   background-image: url('../images/landing.jpg');
   background-repeat: no-repeat;
@@ -58,6 +74,7 @@ p, ol {
 }
 
 
+// style and readjust all logos, icons size
 .brand-size {
   width: 100%;
   height: 80px;
@@ -68,6 +85,7 @@ p, ol {
   height: 60px;
 }
 
+
 .icon-size {
   width: 70px;
   height: 70px;
@@ -77,7 +95,6 @@ p, ol {
   color: $primary;
 }
 
-
 .resize-font {
   font-size: 1.5rem;
 }
@@ -86,6 +103,9 @@ p, ol {
   font-size: 2rem;
 }
 
+
+
+// information icon hover effect
 #appInfo:hover {
   transform: scale(1.5);
   color: black;
@@ -93,7 +113,7 @@ p, ol {
 
 
 /*  style the modal screen */
-.location-modal, .info-modal, #myModal {
+.info-modal {
   display: none;
   position: fixed;
   background-color: white;
@@ -108,31 +128,22 @@ p, ol {
 
 }
 
-.close-bar {
-  font-size: 2.3rem;
-  position: absolute;
-  right: 12%;
-  top: 7%;
-}
-
-#modalContentInfo{
-  background-color: white;
-  // margin-left: auto;
-  // margin-right: auto;
-  // border: 5px solid #90b9a9;
-  // width: 40%;
-  // height: 1000px;
-  // margin-top: 10%;
+// style close button color
+.close {
+  color: #fff;
+  opacity: 1;
 }
 
 
-.modal-size {
-  width: 100%;
-  height: auto;
+// button hover effect
+.btn:hover {
+  color: $body-color;
 }
 
+
+//  readjust the size for images, some text size, and border frame size
 .img-size {
-  width: 550px;
+  width: 100%;
   height: 250px;
 }
 
@@ -142,46 +153,56 @@ p, ol {
 }
 
 
-
-/*  Add Zoom Animation for modal  */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+.frame-size {
+  width: 100%;
+  height: 200px;
 }
 
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
-}
-
-@keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
+.banner-size {
+  width: 100%;
+  height: 600px;
 }
 
 
+.card-size {
+  width: 20rem;
+}
+
+// .re-position {
+//   z-index: 1;
+//   top: 30%;
+//   left: 30%;
+// }
 
 
+//  set icon for cursor pointer
+.fas {
+  cursor: pointer;
+}
+
+
+
+
+// display for phone screen size
 @media (max-width: 600px){
-  .quotes, .social-desktop {
+  .quotes, .social-desktop, #imgBanner, #map {
     display: none;
   }
 
-
 }
 
 
+// display for biggger phone scren size
 @media (min-width: 600px){
   .background-carousel{
     width: 100%;
     height: 1024px;
   }
 
-
-
-
 }
 
+
+// display for tablet size
 @media only screen and (min-width: 768px) {
   .background-carousel{
     width: 100%;
@@ -201,6 +222,7 @@ p, ol {
 }
 
 
+// display for desktop scren size
 @media (min-width: 992px){
   .background-carousel{
     width: 100%;
@@ -218,6 +240,7 @@ p, ol {
 
   .quotes {
     font-size: 1.2rem;
+    text-shadow: 2px 2px rgba(0,0,0,0.4);
   }
 
   .banner-border {
@@ -226,20 +249,25 @@ p, ol {
   }
 
   .img-size {
-    width: 550px;
+    width: 100%;
     height: 250px;
   }
 
-  // .desktop-border {
-  //   width: 80%;
-  //   height: 500px;
-  //   margin: 5rem;
-  //   margin-top: 15rem;
-  // }
-  //
-  // .closeBar {
-  //   right: 18%;
-  //
-  // }
+
+  .frame-size {
+    width: 100%;
+    height: 300px;
+  }
+
+  .re-position {
+    top: 60%;
+    left: 45%;
+
+  }
+
+  .card-size {
+    width: 23rem;
+  }
+
 
 }
