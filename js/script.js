@@ -425,6 +425,7 @@ var accommodation = [
 
 $('#searchBanner').hide();
 $('#sec2').hide();
+$('#map').hide();
 // $('#landing').hide();
 
 $(document).ready(function(){
@@ -443,16 +444,29 @@ $(document).ready(function(){
   });
 
 
-  $('#mapBtn').click(function(){
+  $('#showList').click(function(){
+    $('#map').hide();
+  });
+
+  $('#showMap').click(function(){
     $('#map').show();
-    var location = document.getElementById('location').value;
-    var duration = document.getElementById('duration').value;
-    console.log(location,duration);
-     initMap(location,duration);
+    var location = document.getElementById('locationSelect').value;
+    console.log(location);
+     initMap(location);
   });
 
 
 });
+
+
+// function displayMap(){
+//   $('#showMap').click(function(){
+//     $('#map').show();
+//     var location = document.getElementById('locationSelect').value;
+//     console.log(location);
+//      initMap(location);
+//   });
+// }
 
 
 // move from landing page to accommdation list result
@@ -526,8 +540,14 @@ function validate() {
   } else {
     $('#landing').hide();
     $('#sec2').show();
+
     // $('#searchBanner').show();
     filter();
+    // displayMap();
+    // $('#map').show();
+    // var location = document.getElementById('locationSelect').value;
+    // console.log(location);
+    // initMap(location);
 
   }
 
@@ -555,35 +575,9 @@ function displayAccommodation(k) {
 
 
   document.getElementById('result').innerHTML
-  += '<div class="align-items-center mx-auto my-5 px-4 col-sm-12 col-lg-4">'
+  += '<div class="align-items-center mx-auto my-5 px-4 col-sm-12 col-lg-6">'
   +    '<div class="card card-size">'
   +        '<img src=" ' + accommodation[k].photo1 + ' " alt="photo1" class="card-img-top img-size"/>'
-  // +      '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">'
-  // +        '<ol class="carousel-indicators">'
-  // +           '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>'
-  // +           '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>'
-  // +           '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li> '
-  // +        '</ol>'
-  // +        '<div class="carousel-inner">'
-  // +           '<div class="carousel-item active">'
-  // +             '<img src=" ' + accommodation[k].photo1 + ' " alt="photo1" class="d-block img-size"/>'
-  // +           '</div>'
-  // +           '<div class="carousel-item">'
-  // +             '<img src=" ' + accommodation[k].photo2 + ' "class="d-block img-size" alt="photo2"/>'
-  // +           '</div>'
-  // +           '<div class="carousel-item">'
-  // +             '<img src=" ' + accommodation[k].photo3 + ' " class="d-block img-size" alt="photo3"/>'
-  // +           '</div>'
-  // +         '</div>'
-  // +         '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'
-  // +           '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'
-  // +           '<span class="sr-only">Previous</span>'
-  // +         '</a>'
-  // +         '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">'
-  // +           '<span class="carousel-control-next-icon" aria-hidden="true"></span>'
-  // +           '<span class="sr-only">Next</span>'
-  // +         '</a>'
-  // +        '</div>'
   +         '<div class="card-body">'
   +           '<div class="row">'
   +             '<div class="col">'
@@ -694,7 +688,7 @@ function displayBannerImg(){
 
 
 
-
+var selected = []
 // Filter the options based on user's input
 function filter(){
 
@@ -712,12 +706,19 @@ function filter(){
   document.getElementById('result').innerHTML = '';
 
     for(var i=0; i< accommodation.length; i++){
+      console.log(accommodation[i].location.toLowerCase());
+
       if ((chosenLocation === accommodation[i].location)
            && (chosenGuest >= accommodation[i].minPeople) && (chosenGuest <= accommodation[i].maxPeople)
            && (days >= accommodation[i].minNight) && (days <= accommodation[i].maxNight)){
              console.log(accommodation[i]);
         displayAccommodation(i);
         displayBannerImg();
+        // push object into an array
+        $('#map').show();
+        var location = document.getElementById('locationSelect').value;
+        console.log(location);
+        initMap(accommodation[i].latitude,accommodation[i].longitude, location);
         // openModal(accommodation[i]);
 
        }
@@ -848,7 +849,8 @@ document.getElementById('result').addEventListener('click', function(e) {
    +                '<p> $' + accommodationToShow.price + ' X 3 night/s</p>'
    +              '</div>'
    +              '<div class="col">'
-   +                '<p id="accPrice"> $' + total + '</p>'
+   +                '<p class="d-inline">$</p>'
+   +                '<p id="accPrice" class="d-inline"> ' + total + '</p>'
    +              '</div>'
    +            '</div>'
    +           '</br> <label class="text-left" for="mealSelect">Optional Meal Package</label></br>'
@@ -889,34 +891,37 @@ function calcMeal(){
   // let accommodationToShow = (accommodation.filter(acc => acc.id === accommodationID))[0];
   // var price = accommodationToShow.price;
   // var price = document.getElementById('accPrice').value;
+  // var price = 90;
+  var price = document.getElementById('accPrice').textContent;
   var x = document.getElementById('mealSelect').value;
   var grandTotal = 0;
+
 
   console.log(typeof(price),typeof(x),price,x);
 
   switch(x){
     case 'breakfast':
-      grandTotal = 20 + price;
+      grandTotal = 20 + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
     case 'lunch':
-      grandTotal = 35 + price;
+      grandTotal = 35 + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
     case 'dinner':
-      grandTotal = 35 + price;
+      grandTotal = 35 + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
     case 'all':
-      grandTotal = 80 + price;
+      grandTotal = 80 + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
     case 'none':
-      grandTotal = 0 + price;
+      grandTotal = 0 + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
@@ -935,7 +940,6 @@ function calcMeal(){
 
 
 
-
 // access API key from config.json
 var myKey = JSON.parse(apiKey);
 console.log(myKey[0].key);
@@ -943,15 +947,22 @@ console.log(myKey[0].key);
 //dynamically creating the script elements and
 //giving src attribute the google plug in with key from external JSON
 var script = document.createElement('script');
-script.src = 'https://maps.googleapis.com/maps/api/js?key=' + myKey[0].key
+script.src = 'https://maps.googleapis.com/maps/api/js?key=' + myKey[0].key + '&callback=map';
 document.getElementsByTagName('body')[0].appendChild(script);
 
+function map(){
 
-function initMap(l,d) {
-  console.log(l,d);
+var center;
+center = {lat: -41.2911449, lng: 174.7814447};
+var map = new google.maps.Map(
+  document.getElementById('map'), {zoom: 12, center: center});
+}
+// displaying map
+function initMap(lat, long, l) {
+  console.log();
 
 //   var center = {lat:beaches[0].latitude, lng:beaches[0].longitude};//Scorching Bay Beach - first in objects array
-    var center;
+
     var oldwindow;
 
     if (l === "Wellington") {
@@ -965,62 +976,27 @@ function initMap(l,d) {
     }
     console.log(l);
 
-   var map = new google.maps.Map(document.getElementById('map'), {
-     center: center,
-     zoom: 12,
-     mapTypeId: 'roadmap',
-     styles:[
-       {
-       featureType : 'water',
-       stylers: [
-            {
-           color: '#48dbfb'
-            }]
-        },
-        {
-        featureType : 'road',
-        elementType : 'geometry',
-        stylers: [
-             {
-            lightness: '-40'
-             }]
-         },
-         {
-         featureType : 'road',
-         elementType : 'labels.text.fill',
-         stylers: [
-              {
-             color: '#34495e'
-              }]
-          },
-          {
-          featureType : 'landscape',
-          stylers: [
-               {
-              color: '#2ecc71'
-               }]
-           },
-      ]
-   }); //end of map objects
+
+    // var map = new google.maps.Map(
+    //   document.getElementById('map'), {zoom: 12, center: center});
+
 
 
     for (var i = 0; i < accommodation.length; i++) {
-    console.log(l,typeof(l), d, typeof(d));
+    console.log(l,typeof(l));
     console.log(accommodation[i].location, typeof(accommodation[i].location));
     console.log(accommodation[i].location === l);
-    console.log(accommodation[i].duration <= d);
+    // console.log(accommodation[i].duration <= d);
 
-       if ((accommodation[i].location === l) && (accommodation[i].duration <= d)){
+       if (accommodation[i].location === l) {
          // create content dynamically
          var contentString
-           = 'div class="card" style="width: 10rem;">'
-           +   '<img class="card-img-top" src="'+ accommodation[i].photo1 + '" alt="photo">'
-           +   '<div class="card-body">'
-           +      '<h5>' + accommodation[i].name + '</h5>'
-           +      '<h6>' + accommodation[i].address + '</h6>'
-           +      '<h6>' + accommodation[i].price + ' /night </h6>'
-           +      '<h6>' + accommodation[i].rating + '</h6>'
-           +   '</div>' ;
+           // = 'div class="card marker-card-size">'
+           =   '<img class="marker-img-size thumbnail" src="'+ accommodation[i].photo1 + '" alt="photo">'
+           +      '<h6>' + accommodation[i].name + '</h6>'
+           +      '<p>' + accommodation[i].price + ' /night </p>'
+           +      '<p class="d-inline">' + accommodation[i].rating + '</p>'
+           +      '<i class="d-inline pr-2 text-warning fas fa-star"></i>';
 
        }
 
@@ -1030,10 +1006,10 @@ function initMap(l,d) {
 
 
       // position to add marker
-      var position = {lat: accommodation[i].latitude, lng: accommodation[i].longitude};
+      var position = {lat: lat, lng: long};
 
       // create marker
-       var myIcon = 'http://maps.google.com/mapfiles/kml/shapes/ranger_station.png';
+       var myIcon = 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png';
        var marker =  new google.maps.Marker({
          position: position,
          map: map,

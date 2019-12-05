@@ -4722,6 +4722,15 @@ p, ol {
 .card-size {
   width: 20rem; }
 
+#map {
+  width: 800px;
+  height: 500px;
+  background-color: black; }
+
+.marker-img-size {
+  width: 250px;
+  height: 150px; }
+
 .fas {
   cursor: pointer; }
 
