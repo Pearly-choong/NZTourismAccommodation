@@ -4679,6 +4679,9 @@ p, ol {
 .fa-home {
   font-size: 2rem; }
 
+.fa-calculator {
+  font-size: 1rem; }
+
 #appInfo:hover {
   transform: scale(1.5);
   color: black; }
@@ -4721,7 +4724,7 @@ p, ol {
   cursor: pointer; }
 
 @media (max-width: 600px) {
-  .quotes, .social-desktop, #imgBanner, #map {
+  .quotes, .social-desktop, #imgBanner, #mobileDisplay, .desktop {
     display: none; }
 
   .background-carousel {
@@ -4730,7 +4733,10 @@ p, ol {
 @media (min-width: 500px) {
   .background-carousel {
     width: 100%;
-    height: 1020px; } }
+    height: 1020px; }
+
+  #map {
+    display: none; } }
 @media (min-width: 600px) {
   .background-carousel {
     width: 100%;
@@ -4783,6 +4789,9 @@ p, ol {
 
   #map {
     width: 800px;
-    height: 500px; } }
+    height: 500px; }
+
+  .mobile {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map */

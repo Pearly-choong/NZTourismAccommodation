@@ -103,6 +103,9 @@ p, ol {
   font-size: 2rem;
 }
 
+.fa-calculator {
+  font-size: 1rem;
+}
 
 
 // information icon hover effect
@@ -177,7 +180,7 @@ p, ol {
 
 // display for phone screen size
 @media (max-width: 600px){
-  .quotes, .social-desktop, #imgBanner, #map {
+  .quotes, .social-desktop, #imgBanner, #mobileDisplay, .desktop{
     display: none;
   }
 
@@ -197,6 +200,9 @@ p, ol {
     height: 1020px;
   }
 
+  #map {
+    display: none;
+  }
 
 }
 
@@ -281,6 +287,10 @@ p, ol {
     width: 800px;
     height: 500px;
 
+  }
+
+  .mobile {
+    display: none;
   }
 
 }

@@ -156,12 +156,24 @@
         <div class="col-sm-12 col-lg-6 mt-3">
           <div id="summary"></div>
         </div>
-        <div class="col-sm-12 col-lg-6 align-items-center mt-3">
+        <div class="col-sm-12 col-lg-6 align-items-center mt-3 desktop">
           <button type="button" id="showList" class="btn btn-primary">
             <span><i class="fas fa-th-list pr-2"></i></span>
             List View
           </button>
           <button type="button" id="showMap" class="btn btn-primary mr-3">
+            <span><i class="fas fa-map-marker-alt pr-2"></i></span>
+            Map View
+          </button>
+        </div>
+      </div>
+      <div class="mobile fixed-bottom pb-2">
+        <div class="col-sm-12 col-lg-6 align-items-center mt-3">
+          <button type="button" id="showListMobile" class="btn btn-primary border-dark">
+            <span><i class="fas fa-th-list pr-2"></i></span>
+            List View
+          </button>
+          <button type="button" id="showMapMobile" class="btn btn-primary border-dark mr-3">
             <span><i class="fas fa-map-marker-alt pr-2"></i></span>
             Map View
           </button>
@@ -175,7 +187,7 @@
           <!-- sort result -->
           <div id="result" class="row"></div>
         </div>
-        <div class="col-lg-6 float-right pr-5 pt-5">
+        <div id="mobileDisplay" class="col-lg-6 float-right pr-5 pt-5">
           <!-- google API map -->
           <div id="map"></div>
         </div>

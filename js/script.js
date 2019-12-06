@@ -450,28 +450,41 @@ $(document).ready(function(){
 
   $('#showMap').click(function(){
     $('#map').show();
-    place = document.getElementById('locationSelect').value;
-    console.log(location);
-     // initMap(location);
+
   });
 
+  $('#showListMobile').click(function(){
+    $('#map').hide();
+    $('#result').show();
+  });
+
+  $('#showMapMobile').click(function(){
+    $('#result').hide();
+    $('#map').show();
+    $('#mobileDisplay').show();
+
+  });
 
 });
 
 
-// function displayMap(){
-//   $('#showMap').click(function(){
-//     $('#map').show();
-//     var location = document.getElementById('locationSelect').value;
-//     console.log(location);
-//      initMap(location);
-//   });
-// }
-
 
 // move from landing page to accommdation list result
   document.getElementById('search').addEventListener('click',function(){
+    // var days, chosenGuest, place, chosenLocation, guest, start, end;
+    //
+    // place = document.getElementById('locationSelect');
+    // chosenLocation = place.options[place.selectedIndex].text;
+    //
+    // guest = document.getElementById('guestSelect');
+    // chosenGuest = guest.options[guest.selectedIndex].text;
+    //
+    // start = $('#startDate').datepicker('getDate');
+    // end = $('#endDate').datepicker('getDate');
+    //
+    // days = dateDiff();
 
+    // validate(chosenLocation, chosenGuest, start, end, days);
     validate();
 
   });
@@ -557,7 +570,7 @@ function validate() {
 
   if ((chosenLocation === 'Select Location') || (chosenGuest === "Guest") || (start === null) || (end === null)){
      //alert("Sorry! Please enter choose your location!");
-    swal("Sorry!", "All field are required. Please select your location, check-in date, check-out date and guest!", "info");
+    swal("Missing Information!", "All field are required. Please select your location, check-in date, check-out date and guest!", "info");
   } else {
     $('#landing').hide();
     $('#sec2').show();
@@ -591,7 +604,7 @@ function displayAccommodation(k) {
 
   document.getElementById('result').innerHTML
   += '<div class="align-items-center mx-auto my-5 px-4 col-sm-12 col-lg-6">'
-  +    '<div class="card card-size">'
+  +    '<div id="'+ accommodation[k].id +'" class="card card-size">'
   +        '<img src=" ' + accommodation[k].photo1 + ' " alt="photo1" class="card-img-top img-size"/>'
   +         '<div class="card-body">'
   +           '<div class="row">'
@@ -631,7 +644,7 @@ function displayAccommodation(k) {
   +               '<p class="text-right"> $' + total + ' total</p>'
   +             '</div>'
   +            '</div>'
-  +           ' <button type="button" id="'+ accommodation[k].id +'"class="btn btn-primary my-accommodation w-100">View More </button>'
+  +           ' <button type="button" class="btn btn-primary my-accommodation w-100">View More </button>'
   +         '</div>'
   +     '</div>'
   +   '</div>';
@@ -644,13 +657,14 @@ function displayAccommodation(k) {
 
 // display banner location image
 function displayBannerImg(){
-  place = document.getElementById('locationSelect').value;
+  //place = document.getElementById('locationSelect').value;
+
   // chosenLocation = place.options[place.selectedIndex].text;
-  // getInfo();
-  console.log(place);
+   getInfo();
+   console.log(chosenLocation);
 
   for(var i=0; i< accommodation.length; i++){
-    if (place === accommodation[i].location){
+    if (chosenLocation === accommodation[i].location){
      console.log(accommodation[i]);
       document.getElementById('imgBanner').innerHTML
       = '<img src=" ' + accommodation[i].photoCity + ' " alt="locationPhoto" class="banner-size"position-relative"/>'
@@ -678,7 +692,8 @@ function displayBannerImg(){
    document.getElementById('summary').innerHTML ='';
    document.getElementById('summary').innerHTML
    += '<p class="text-left pl-3 h6 font-size-sm">Your trip is ' + days + ' days in ' + chosenLocation + ' for '
-   + chosenGuest  + ' guests from ' + dateStart + ' to ' + dateEnd + '</p>'
+   + chosenGuest  + ' guests from ' + dateStart + ' to ' + dateEnd + '</p>';
+
 
  }
 
@@ -691,11 +706,18 @@ var selected = [];
 // Filter the options based on user's input
 var selectedArray =[];
 
+
+
+
+
+
+
 function filter(){
 
-  getInfo();
+   getInfo();
 
   console.log(chosenLocation, chosenGuest, days);
+
 
   document.getElementById('result').innerHTML = '';
 
@@ -719,7 +741,9 @@ function filter(){
 
     console.log(selectedArray);
     console.log(chosenLocation, chosenGuest, days);
-    console.log(accommodation[i]);
+
+
+
     initMap(selectedArray);
     id ++;
 
@@ -728,13 +752,10 @@ function filter(){
 
 // open modal content
 document.getElementById('result').addEventListener('click', function(e) {
-
+  console.log(e);
   $('#myModal').modal('show');
-  console.log(e.target.id);
-  console.log(accommodation);
-  let accommodationID = parseInt(e.target.id);
-  console.log(accommodationID);
-  console.log(typeof accommodationID);
+
+  let accommodationID = parseInt(e.target.parentNode.id);
   let accommodationToShow = (accommodation.filter(acc => acc.id === accommodationID))[0];
   console.log(accommodationToShow);
 
@@ -744,7 +765,7 @@ document.getElementById('result').addEventListener('click', function(e) {
    var dateStart = $.datepicker.formatDate('dd-mm-yy', start);
    var dateEnd = $.datepicker.formatDate('dd-mm-yy', end);
 
-
+   console.log(accommodationToShow);
    var total = accommodationToShow.price * days;
 
    // display accommodation title name
@@ -846,7 +867,8 @@ document.getElementById('result').addEventListener('click', function(e) {
    +             '<option value="all">Breakfast, Lunch & Dinner $80</option>'
    +             '<option value="none">No Meal</option>'
    +            '</select>'
-   // +            '</br><i class="fas fa-calculator"></i>'
+   // +            '</br><i id="calculate" class="d-inline fas fa-calculator"></i>'
+   // +            '<p class="d-inline">Calculate</p>'
    +            '</br></br><div id="grandTotalResult" class="text-primary"><h4>Grand Total: $' + total + '</h4></div>'
    +            '</br>'
    +            '<a href="' + accommodationToShow.website + '" target="_blank"><button class="btn btn-lg text-white bg-primary w-50" type="button">Reserve</button></a>'
@@ -859,11 +881,12 @@ document.getElementById('result').addEventListener('click', function(e) {
 
    $('#mealSelect').click(function(){
      calcMeal()
- });
+
+   });
+
+
 
 })
-
-
 
 
 
@@ -901,12 +924,12 @@ function calcMeal(){
     break;
 
     case 'none':
-      grandTotal = 0 + parseInt(price);
-      document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
+     grandTotal = 0 + parseInt(price);
+     document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
     default:
-      document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + price + '</h4>';
+
   }
 
   console.log((x));
@@ -929,51 +952,57 @@ var script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=' + myKey[0].key ;
 document.getElementsByTagName('body')[0].appendChild(script);
 
+
+
+
+
+
+
 // displaying map
 function initMap(newArray) {
   console.log(newArray);
     var center = {lat: -41.2911449, lng: 174.7814447}; ;
 
     var oldwindow;
-
+    var zoom;
 
     if (chosenLocation === "Wellington") {
       center = {lat: -41.2911449, lng: 174.7814447};
+      zoom = 10
     } else if (chosenLocation === "Auckland") {
       center = {lat:-36.8485 , lng:174.7633};
+      zoom = 15
     } else if (chosenLocation === "Christchurch") {
       center = {lat:-43.5321 , lng:172.6362};
+      zoom = 15
     } else if (chosenLocation === "Queenstown") {
       center = {lat:-45.0312 , lng:168.6626};
+      zoom = 15
     }
     console.log(chosenLocation);
 
 
     var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 12, center: center});
+      document.getElementById('map'), {zoom: zoom, center: center});
 
 
     for(var i=0; i<accommodation.length; i++ ){
       for (var j = 0; j < newArray.length; j++) {
 
-    // console.log(l,typeof(l));
-    // console.log(accommodation[i].location, typeof(accommodation[i].location));
-    // console.log(accommodation[i].location === l);
-    // console.log(accommodation[i].duration <= d);
-      console.log(newArray);
+
+      console.log(newArray[j], accommodation[i].id);
       if (newArray[j] === accommodation[i].id) {
 
         console.log(accommodation[i].id);
          // create content dynamically
          var contentString
-           =   '<img class="marker-img-size thumbnail" src="'+ accommodation[i].photo1 + '" alt="photo">'
+           =   '<a href="' + accommodation[i].website + '" target="_blank"><img class="marker-img-size thumbnail" src="'+ accommodation[i].photo1 + '" alt="photo"></a>'
            +      '<h6>' + accommodation[i].name + '</h6>'
            +      '<p>' + accommodation[i].price + ' /night </p>'
            +      '<p class="d-inline">' + accommodation[i].rating + '</p>'
            +      '<i class="d-inline pr-2 text-warning fas fa-star"></i>';
 
 
-      }
 
        // create infowindow
      var infowindow = new google.maps.InfoWindow({ content: contentString });
@@ -1003,28 +1032,9 @@ function initMap(newArray) {
          }); // end of addListener
 
        } // end of newWindow function
+     }
     } // end of for
 
  } // end of for
 
 } //initMap ENDS
-
-
-
-
-
-
-//===============================================================
-
-// display all accommodation
-// function allAccommodation(){
-//   document.getElementById('result').innerHTML = '';
-//   for(var i=0; i< accommodation.length; i++){
-//     // displayBanner(i);
-//     displayAccommodation(i);
-//
-//     openModal();
-//
-//      id++;
-//   }
-// };
