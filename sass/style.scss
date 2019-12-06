@@ -197,7 +197,7 @@ p, ol {
 
   .background-carousel{
     width: 100%;
-    height: 1020px;
+    height: 1050px;
   }
 
   #map {
@@ -210,7 +210,7 @@ p, ol {
 @media (min-width: 600px){
   .background-carousel{
     width: 100%;
-    height: 1024px;
+    height: 1300px;
   }
 
 }
@@ -236,7 +236,7 @@ p, ol {
 }
 
 
-// display for desktop scren size
+// display for desktop screen size
 @media (min-width: 992px){
   .background-carousel{
     width: 100%;
@@ -293,4 +293,18 @@ p, ol {
     display: none;
   }
 
+}
+
+
+@media (min-width: 1200px){
+  .background-carousel{
+    width: 100%;
+    height: 1150px;
+  }
+
+  .re-position {
+    top: 48%;
+    left: 45%;
+
+  }
 }

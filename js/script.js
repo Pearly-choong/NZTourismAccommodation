@@ -471,20 +471,7 @@ $(document).ready(function(){
 
 // move from landing page to accommdation list result
   document.getElementById('search').addEventListener('click',function(){
-    // var days, chosenGuest, place, chosenLocation, guest, start, end;
-    //
-    // place = document.getElementById('locationSelect');
-    // chosenLocation = place.options[place.selectedIndex].text;
-    //
-    // guest = document.getElementById('guestSelect');
-    // chosenGuest = guest.options[guest.selectedIndex].text;
-    //
-    // start = $('#startDate').datepicker('getDate');
-    // end = $('#endDate').datepicker('getDate');
-    //
-    // days = dateDiff();
 
-    // validate(chosenLocation, chosenGuest, start, end, days);
     validate();
 
   });
@@ -575,13 +562,8 @@ function validate() {
     $('#landing').hide();
     $('#sec2').show();
 
-    // $('#searchBanner').show();
+
     filter();
-    // displayMap();
-    // $('#map').show();
-    // var location = document.getElementById('locationSelect').value;
-    // console.log(location);
-    // initMap(location);
 
   }
 
@@ -604,7 +586,7 @@ function displayAccommodation(k) {
 
   document.getElementById('result').innerHTML
   += '<div class="align-items-center mx-auto my-5 px-4 col-sm-12 col-lg-6">'
-  +    '<div id="'+ accommodation[k].id +'" class="card card-size">'
+  +    '<div class="card card-size">'
   +        '<img src=" ' + accommodation[k].photo1 + ' " alt="photo1" class="card-img-top img-size"/>'
   +         '<div class="card-body">'
   +           '<div class="row">'
@@ -644,7 +626,7 @@ function displayAccommodation(k) {
   +               '<p class="text-right"> $' + total + ' total</p>'
   +             '</div>'
   +            '</div>'
-  +           ' <button type="button" class="btn btn-primary my-accommodation w-100">View More </button>'
+  +           ' <button type="button" id="'+ accommodation[k].id +'" class="btn btn-primary my-accommodation w-100">View More </button>'
   +         '</div>'
   +     '</div>'
   +   '</div>';
@@ -714,7 +696,7 @@ var selectedArray =[];
 
 function filter(){
 
-   getInfo();
+  getInfo();
 
   console.log(chosenLocation, chosenGuest, days);
 
@@ -755,8 +737,10 @@ document.getElementById('result').addEventListener('click', function(e) {
   console.log(e);
   $('#myModal').modal('show');
 
-  let accommodationID = parseInt(e.target.parentNode.id);
+  //let accommodationID = parseInt(e.target.parentNode.id);
+  let accommodationID = parseInt(e.target.id);
   let accommodationToShow = (accommodation.filter(acc => acc.id === accommodationID))[0];
+  console.log(e.target.id);
   console.log(accommodationToShow);
 
   getInfo();
@@ -879,10 +863,11 @@ document.getElementById('result').addEventListener('click', function(e) {
    +   '</div>'
    +  '</div>';
 
-   $('#mealSelect').click(function(){
-     calcMeal()
 
-   });
+   $('#mealSelect').click(function(){
+    calcMeal()
+
+  });
 
 
 
@@ -934,7 +919,7 @@ function calcMeal(){
 
   console.log((x));
   console.log(grandTotal);
-
+  return grandTotal;
 
 }
 
@@ -968,16 +953,16 @@ function initMap(newArray) {
 
     if (chosenLocation === "Wellington") {
       center = {lat: -41.2911449, lng: 174.7814447};
-      zoom = 10
+      zoom = 14;
     } else if (chosenLocation === "Auckland") {
       center = {lat:-36.8485 , lng:174.7633};
-      zoom = 15
+      zoom = 10;
     } else if (chosenLocation === "Christchurch") {
       center = {lat:-43.5321 , lng:172.6362};
-      zoom = 15
+      zoom = 13;
     } else if (chosenLocation === "Queenstown") {
       center = {lat:-45.0312 , lng:168.6626};
-      zoom = 15
+      zoom = 15;
     }
     console.log(chosenLocation);
 
@@ -996,11 +981,11 @@ function initMap(newArray) {
         console.log(accommodation[i].id);
          // create content dynamically
          var contentString
-           =   '<a href="' + accommodation[i].website + '" target="_blank"><img class="marker-img-size thumbnail" src="'+ accommodation[i].photo1 + '" alt="photo"></a>'
-           +      '<h6>' + accommodation[i].name + '</h6>'
-           +      '<p>' + accommodation[i].price + ' /night </p>'
-           +      '<p class="d-inline">' + accommodation[i].rating + '</p>'
-           +      '<i class="d-inline pr-2 text-warning fas fa-star"></i>';
+           = '<a href="' + accommodation[i].website + '" target="_blank"><img class="marker-img-size thumbnail" src="'+ accommodation[i].photo1 + '" alt="photo"></a>'
+           + '<h6 class="pt-1">' + accommodation[i].name + '</h6>'
+           + '<p>$' + accommodation[i].price + ' /night </p>'
+           + '<p class="d-inline">' + accommodation[i].rating + '</p>'
+           + '<i class="d-inline pr-2 text-warning fas fa-star"></i>';
 
 
 
@@ -1012,11 +997,12 @@ function initMap(newArray) {
       var position = {lat: accommodation[i].latitude, lng: accommodation[i].longitude};
 
       // create marker
-       var myIcon = 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png';
+      // var myIcon = 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png';
+       var myIcon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png';
        var marker =  new google.maps.Marker({
          position: position,
          map: map,
-         icon : myIcon
+         //icon : myIcon
        });
 
        newWindow(marker, infowindow);
@@ -1024,6 +1010,7 @@ function initMap(newArray) {
        function newWindow(newMarker, newInfowindow){
 
          newMarker.addListener('click', function() {
+
            if( oldwindow){
              oldwindow.close();
            }
