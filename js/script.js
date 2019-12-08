@@ -422,47 +422,53 @@ var accommodation = [
 ];
 
 
-
+// by default
 $('#searchBanner').hide();
 $('#sec2').hide();
 $('#map').hide();
-// $('#landing').hide();
+
 
 $(document).ready(function(){
 
-  //  modal screen
+  //  when user clicks on explore
   $('#sec1').click(function(){
     $('#searchBanner').show();
     $('#sec1').hide();
-
   });
 
-
+  // when user clicks home icon
   $('#backToHome').click(function(){
     $('#landing').show();
     $('#sec2').hide();
   });
 
+  // when user clicks brand logo
+  $('#homeLogo').click(function(){
+    $('#landing').show();
+    $('#sec2').hide();
+  });
 
+  // when user clicks show list - desktop
   $('#showList').click(function(){
     $('#map').hide();
   });
 
+ // when user clicks show map - desktop
   $('#showMap').click(function(){
     $('#map').show();
-
   });
 
+  // when user clicks show map - mobile
   $('#showListMobile').click(function(){
     $('#map').hide();
     $('#result').show();
   });
 
+ // when user clicks show list - mobile
   $('#showMapMobile').click(function(){
     $('#result').hide();
     $('#map').show();
     $('#mobileDisplay').show();
-
   });
 
 });
@@ -585,7 +591,7 @@ function displayAccommodation(k) {
 
 
   document.getElementById('result').innerHTML
-  += '<div class="align-items-center mx-auto my-5 px-4 col-sm-12 col-lg-6">'
+  += '<div class="align-items-center mx-auto my-5 px-4 col-sm-12 col-md-12 col-lg-6">'
   +    '<div class="card card-size">'
   +        '<img src=" ' + accommodation[k].photo1 + ' " alt="photo1" class="card-img-top img-size"/>'
   +         '<div class="card-body">'
@@ -615,7 +621,7 @@ function displayAccommodation(k) {
   +               '<h6 class="text-left">' + accommodation[k].name + ' </h6>'
   +             '</div>'
   +             '<div class="col">'
-  +               '<p class="text-right"> $' + accommodation[k].price + ' / night</p>'
+  +               '<p class="text-right font-weight-bold text-primary"> $' + accommodation[k].price + ' / night</p>'
   +             '</div>'
   +            '</div>'
   +            '<div class="row">'
@@ -656,6 +662,7 @@ function displayBannerImg(){
 
     }
     console.log('image');
+
 }
 
 
@@ -684,16 +691,9 @@ function displayBannerImg(){
 
 
 var selected = [];
-
-// Filter the options based on user's input
 var selectedArray =[];
 
-
-
-
-
-
-
+// Filter the options based on user's input
 function filter(){
 
   getInfo();
@@ -706,30 +706,27 @@ function filter(){
     for(var i=0; i< accommodation.length; i++){
       console.log(accommodation[i].location.toLowerCase());
 
-      if ((chosenLocation === accommodation[i].location)
-           && (chosenGuest >= accommodation[i].minPeople) && (chosenGuest <= accommodation[i].maxPeople)
-           && (days >= accommodation[i].minNight) && (days <= accommodation[i].maxNight)){
-             console.log(accommodation[i]);
+      if ((chosenLocation === accommodation[i].location) && (chosenGuest >= accommodation[i].minPeople) && (chosenGuest <= accommodation[i].maxPeople) && (days >= accommodation[i].minNight) && (days <= accommodation[i].maxNight)){
+       console.log(accommodation[i]);
         displayAccommodation(i);
         displayBannerImg();
         // push object into an array
         $('#map').show();
         selectedArray.push(accommodation[i].id);
 
+      } //end of if
 
-       }
-
-      }
+    } // end of for
 
     console.log(selectedArray);
     console.log(chosenLocation, chosenGuest, days);
 
-
-
+    // call the map
     initMap(selectedArray);
     id ++;
 
 }
+
 
 
 // open modal content
@@ -758,7 +755,7 @@ document.getElementById('result').addEventListener('click', function(e) {
 
    document.getElementById('modalBody').innerHTML
    =  '<div class="text-center ml-auto mr-auto px-1">'
-   +    '<div class="card w-100" style="width: 25rem;">'
+   +    '<div class="card w-100">'
    +      '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">'
    +        '<ol class="carousel-indicators">'
    +           '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>'
@@ -775,7 +772,7 @@ document.getElementById('result').addEventListener('click', function(e) {
    +           '<div class="carousel-item">'
    +             '<img src=" ' + accommodationToShow.photo3 + ' " class="d-block img-size" alt="photo3"/>'
    +           '</div>'
-   +         '</div>'
+   +         '</div>' //end of carousel-inner
    +         '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">'
    +           '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'
    +           '<span class="sr-only">Previous</span>'
@@ -784,8 +781,8 @@ document.getElementById('result').addEventListener('click', function(e) {
    +           '<span class="carousel-control-next-icon" aria-hidden="true"></span>'
    +           '<span class="sr-only">Next</span>'
    +         '</a>'
-   +        '</div>'
-   +         '<div class="card-body">'
+   +        '</div>' //end of carousel
+   +        '<div class="card-body">'
    +           '<div class="row">'
    +             '<div class="col">'
    +               '<p class="text-center border border-dark">' + accommodationToShow.type + ' </p>'
@@ -806,10 +803,10 @@ document.getElementById('result').addEventListener('click', function(e) {
    +               '<i class="d-inline pr-2 text-warning fas fa-star"></i>'
    +               '<p class="d-inline text-center">' + accommodationToShow.rating + '</p>'
    +             '</div>'
-   +           '</div>'
+   +           '</div>' //end of facilities icons row
    +           '<div class="row">'
-   +             '<p class="text-left">' + accommodationToShow.description + '</p>'
-   +            '</div>'
+   +             '<p class="text-left px-2">' + accommodationToShow.description + '</p>'
+   +            '</div>'  //end of  description row
    +            '<div class="row">'
    +             '<div class="col">'
    +               '<ul class="list-unstyled">'
@@ -826,10 +823,10 @@ document.getElementById('result').addEventListener('click', function(e) {
    +             '<div class="col">'
    +               '<ul class="list-unstyled">'
    +                 '<li class="text-primary font-weight-bold">Guests</li>'
-   +                 '<li class="text-primary">' + chosenGuest + ' people </li>'
+   +                 '<li id="amtPeople" class="text-primary">' + chosenGuest + '</li>'
    +                '</ul>'
    +             '</div>'
-   +            '</div>'
+   +            '</div>' //end of data row
    +            '<div class="row">'
    +              '<div class="col">'
    +                '<p id="pricePerNight"> $' + accommodationToShow.price + ' / night</p>'
@@ -841,27 +838,30 @@ document.getElementById('result').addEventListener('click', function(e) {
    +                '<p class="d-inline">$</p>'
    +                '<p id="accPrice" class="d-inline"> ' + total + '</p>'
    +              '</div>'
-   +            '</div>'
+   +            '</div>' //end of calculate row
    +           '</br> <label class="text-left" for="mealSelect">Optional Meal Package</label></br>'
    +           '<select id="mealSelect" class="form-control">'
    +             '<option selected>Choose Meal Options</option>'
-   +             '<option value="breakfast">Breakfast $20</option>'
-   +             '<option value="lunch">Lunch $35</option>'
-   +             '<option value="dinner">Dinner $35</option>'
-   +             '<option value="all">Breakfast, Lunch & Dinner $80</option>'
+   +             '<option value="breakfast">Breakfast $20 each</option>'
+   +             '<option value="lunch">Lunch $35 each</option>'
+   +             '<option value="dinner">Dinner $35 each</option>'
+   +             '<option value="all">Breakfast, Lunch & Dinner $80 each</option>'
    +             '<option value="none">No Meal</option>'
    +            '</select>'
-   // +            '</br><i id="calculate" class="d-inline fas fa-calculator"></i>'
-   // +            '<p class="d-inline">Calculate</p>'
    +            '</br></br><div id="grandTotalResult" class="text-primary"><h4>Grand Total: $' + total + '</h4></div>'
    +            '</br>'
    +            '<a href="' + accommodationToShow.website + '" target="_blank"><button class="btn btn-lg text-white bg-primary w-50" type="button">Reserve</button></a>'
-   +            '</br></br><i class="fas fa-map-marker-alt d-inlne"></i>'
-   +            '<p class="d-inline"> ' + accommodationToShow.address + '</p></br><br>'
-   +             '<iframe src="' +  accommodationToShow.situated + '" class="frame-size" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
-   +        '</div>'
-   +   '</div>'
-   +  '</div>';
+   +        '</div>' //end of card-body
+   +    '</div>' //end of card
+   +   '</div>';  // end of div
+
+
+   document.getElementById('modalFooter').innerHTML
+   =    '<div class="pr-4 p-adjust-mobile">'
+   +    '</br></br><i class="fas fa-map-marker-alt d-inline"></i>'
+   +    '<p class="d-inline"> ' + accommodationToShow.address + '</p></br><br>'
+   +    '<iframe src="' +  accommodationToShow.situated + '" class="frame-size" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
+   +     '</div>';
 
 
    $('#mealSelect').click(function(){
@@ -881,6 +881,7 @@ document.getElementById('result').addEventListener('click', function(e) {
 function calcMeal(){
 
   var price = document.getElementById('accPrice').textContent;
+  var people = document.getElementById('amtPeople').textContent;
   var x = document.getElementById('mealSelect').value;
   var grandTotal = 0;
 
@@ -889,27 +890,27 @@ function calcMeal(){
 
   switch(x){
     case 'breakfast':
-      grandTotal = 20 + parseInt(price);
+      grandTotal = (20 * parseInt(people) ) + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
     case 'lunch':
-      grandTotal = 35 + parseInt(price);
+      grandTotal = (35 * parseInt(people) ) + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
     case 'dinner':
-      grandTotal = 35 + parseInt(price);
+      grandTotal = (35 * parseInt(people) ) + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
       break;
 
     case 'all':
-      grandTotal = 80 + parseInt(price);
+      grandTotal = (80 * parseInt(people) ) + parseInt(price);
       document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
     case 'none':
-     grandTotal = 0 + parseInt(price);
+     grandTotal = (0 * parseInt(people) ) + parseInt(price);
      document.getElementById('grandTotalResult').innerHTML = '<h4>Grand Total: $' + grandTotal + '</h4>';
     break;
 
@@ -946,7 +947,7 @@ document.getElementsByTagName('body')[0].appendChild(script);
 // displaying map
 function initMap(newArray) {
   console.log(newArray);
-    var center = {lat: -41.2911449, lng: 174.7814447}; ;
+    var center = {lat: -41.2911449, lng: 174.7814447};
 
     var oldwindow;
     var zoom;
@@ -974,7 +975,6 @@ function initMap(newArray) {
     for(var i=0; i<accommodation.length; i++ ){
       for (var j = 0; j < newArray.length; j++) {
 
-
       console.log(newArray[j], accommodation[i].id);
       if (newArray[j] === accommodation[i].id) {
 
@@ -987,41 +987,39 @@ function initMap(newArray) {
            + '<p class="d-inline">' + accommodation[i].rating + '</p>'
            + '<i class="d-inline pr-2 text-warning fas fa-star"></i>';
 
+          // create infowindow
+          var infowindow = new google.maps.InfoWindow({ content: contentString });
 
 
-       // create infowindow
-     var infowindow = new google.maps.InfoWindow({ content: contentString });
+          // position to add marker
+          var position = {lat: accommodation[i].latitude, lng: accommodation[i].longitude};
 
+          // create marker
+          // var myIcon = 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png';
+          var myIcon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png';
+          var marker =  new google.maps.Marker({
+            position: position,
+            map: map,
+            //icon : myIcon
+          });
 
-      // position to add marker
-      var position = {lat: accommodation[i].latitude, lng: accommodation[i].longitude};
+          newWindow(marker, infowindow);
 
-      // create marker
-      // var myIcon = 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png';
-       var myIcon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png';
-       var marker =  new google.maps.Marker({
-         position: position,
-         map: map,
-         //icon : myIcon
-       });
+          function newWindow(newMarker, newInfowindow){
 
-       newWindow(marker, infowindow);
+            newMarker.addListener('click', function() {
 
-       function newWindow(newMarker, newInfowindow){
+              if( oldwindow){
+                oldwindow.close();
+              }
+              newInfowindow.open(map, newMarker);
+              oldwindow = newInfowindow;
+            }); // end of addListener
 
-         newMarker.addListener('click', function() {
+          } // end of newWindow function
+     } // end of if
 
-           if( oldwindow){
-             oldwindow.close();
-           }
-           newInfowindow.open(map, newMarker);
-           oldwindow = newInfowindow;
-         }); // end of addListener
-
-       } // end of newWindow function
-     }
-    } // end of for
-
+   } // end of for
  } // end of for
 
 } //initMap ENDS

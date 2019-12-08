@@ -99,6 +99,7 @@
         <img id="appInfo" class="icon-size float-right pr-4" src="images/assets/icons/info.svg" alt="Information" data-toggle="modal" data-target="#infoModal">
       </div>
     </footer>
+
   </div>
 
 
@@ -106,7 +107,7 @@
 
 
   <!-- modal app information -->
-  <div id="infoModal" class="modal fade bd-example-modal-lg align-contents-center" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div id="infoModal" class="modal fade bd-example-modal-lg align-contents-center" tabindex="-1" role="dialog" aria-labelledby="infoModal" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header bg-dark">
@@ -118,45 +119,49 @@
         <div id="infoModalBody" class="modal-body">
           <p>Kia Ora! Welcome to New Zealand.</p>
           <p>This web app helps you to find and book accommdation within New Zealand that fits within your desired needs.</p>
-          </br>
-          <p>FEATURES:</p>
-          <ol class="pl-3">
-            <li>Choose your destination for booking.</li>
-            <li>Enter date travel and no of guests.</li>
-            <li>Filter accomodation types that suit your needs.</li>
-            <li>Choose meal package options if prefered.</li>
-            <li>Sort the accomodation by price.</li>
-            <li>Map view of a list of accomodation available.</li>
-            <li>Summary of estimated total price.</li>
-            <li>Reserve your accomodation through link to approprate website.</li>
-          </ol>
-          <img class="map-img float-right" src="images/assets/icons/NZmap.png" alt="nzMap">
-        </div>
-        <div class="modal-footer">
-          <ul class="list-unstyled">
-            <li><a href="https://www.newzealand.com/int/accommodation/" target="_blank" class="text-primary">Visit Official NZ Tourism Accommodation Website</a></li>
-            <li class="pt-2"><a href="https://www.newzealand.com/assets/Tourism-NZ/PDFs/cbd7fb84f3/f62081_6.PDF" target="_blank" class="text-primary">Download New Zealand Touring Map</a></li>
-          </ul>
-        </div>
+        <br>
+        <p>FEATURES:</p>
+        <ol class="pl-3">
+          <li>Choose your destination for booking.</li>
+          <li>Enter date travel and no of guests.</li>
+          <li>Filter accomodation types that suit your needs.</li>
+          <li>Choose meal package options if prefered.</li>
+          <li>Sort the accomodation by price.</li>
+          <li>Map view of a list of accomodation available.</li>
+          <li>Summary of estimated total price.</li>
+          <li>Reserve your accomodation through link to approprate website.</li>
+        </ol>
+        <img class="map-img float-right" src="images/assets/icons/NZmap.png" alt="nzMap">
+      </div>
+      <div class="modal-footer">
+        <ul class="list-unstyled">
+          <li><a href="https://www.newzealand.com/int/accommodation/" target="_blank" class="text-primary">Visit Official NZ Tourism Accommodation Website</a></li>
+          <li class="pt-2"><a href="https://www.newzealand.com/assets/Tourism-NZ/PDFs/cbd7fb84f3/f62081_6.PDF" target="_blank" class="text-primary">Download New Zealand Touring Map</a></li>
+        </ul>
       </div>
     </div>
   </div>
+</div>
 
 
 
-  <!-- SECTION TWO - ACCOMMODATION LIST  -->
-  <div id="sec2" class="mb-5">
-    <div class="bg-dark py-3 text-center">
-      <i class="fas fa-home text-white pr-3" id="backToHome"></i>
-      <span class="text-white font-size-sm text-break para-Style">ACCOMMODATION</span>
-    </div>
-    <div id="imgBanner" class="text-center"></div>
-    <div class="container-fluid mt-4">
-      <div class="row">
-        <div class="col-sm-12 col-lg-6 mt-3">
-          <div id="summary"></div>
-        </div>
-        <div class="col-sm-12 col-lg-6 align-items-center mt-3 desktop">
+<!-- SECTION TWO - ACCOMMODATION LIST  -->
+<div id="sec2" class="mb-5">
+  <div class="bg-dark py-3 fixed-top text-center">
+    <!-- <div class="mobileLogo"> -->
+    <img id="homeLogo" class="logo-size float-left pl-3" src="images/assets/logos/tourismNZWhite.png" alt="logo">
+    <!-- </div> -->
+    <i class="fas fa-home text-white pr-3" id="backToHome"></i>
+    <span class="text-white font-size-sm text-break para-Style pr-5 mr-5">ACCOMMODATION</span>
+  </div>
+  <div id="imgBanner" class="text-center"></div>
+  <div class="container-fluid mt-4 align-items-center">
+    <div class="row">
+      <div class="col-sm-12 col-lg-6 mt-3">
+        <div id="summary" class="pt-5"></div>
+      </div>
+      <div class="col-sm-12 col-lg-6 align-items-center mt-3">
+        <div class="desktop">
           <button type="button" id="showList" class="btn btn-primary">
             <span><i class="fas fa-th-list pr-2"></i></span>
             List View
@@ -167,54 +172,63 @@
           </button>
         </div>
       </div>
-      <div class="mobile fixed-bottom pb-2 text-center">
-        <div class="col-sm-12 col-lg-6 align-items-center mt-3">
-          <button type="button" id="showListMobile" class="btn btn-primary border-dark">
-            <span><i class="fas fa-th-list pr-2"></i></span>
-            List View
-          </button>
-          <button type="button" id="showMapMobile" class="btn btn-primary border-dark mr-3">
-            <span><i class="fas fa-map-marker-alt pr-2"></i></span>
-            Map View
-          </button>
-        </div>
+    </div>
+    <div class="mobile fixed-bottom pb-2 text-center">
+      <div class="col-sm-12 col-lg-6 align-items-center mt-3">
+        <button type="button" id="showListMobile" class="btn btn-primary border-dark">
+          <span><i class="fas fa-th-list pr-2"></i></span>
+          List View
+        </button>
+        <button type="button" id="showMapMobile" class="btn btn-primary border-dark mr-3">
+          <span><i class="fas fa-map-marker-alt pr-2"></i></span>
+          Map View
+        </button>
       </div>
     </div>
+  </div>
 
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 float-left">
+        <!-- sort result -->
+        <div id="result" class="row"></div>
+      </div>
+      <div id="mobileDisplay" class="col-lg-6 float-right pr-5 pt-5">
+        <!-- google API map -->
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- bd-example-modal-lg -->
+<!-- modal-lg : dialog -->
+
+<!--  modal accommodation info -->
+<div class="modal fade px-auto bd-example-modal-xl" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" id="modal-dialog" role="document">
+    <div class="modal-content adjust-width pb-3">
+      <div class="modal-header bg-dark">
+        <div id="modalTitle"></div>
+        <!-- <h3 class="modal-title text-white text-break" id="modalTitle">Modal title</h3> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="row">
-        <div class="col-lg-6 float-left">
-          <!-- sort result -->
-          <div id="result" class="row"></div>
+        <div class="col-sm-12 col-lg-6">
+          <div id="modalBody" class="modal-body">
+          </div>
         </div>
-        <div id="mobileDisplay" class="col-lg-6 float-right pr-5 pt-5">
-          <!-- google API map -->
-          <div id="map"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- bd-example-modal-lg -->
-  <!-- modal-lg : dialog -->
-
-  <!--  modal accommodation info -->
-  <div class="modal fade px-auto" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" id="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-dark">
-          <div id="modalTitle"></div>
-          <!-- <h3 class="modal-title text-white text-break" id="modalTitle">Modal title</h3> -->
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div id="modalBody" class="modal-body">
+        <div class="col-sm-12 col-lg-6">
+          <div id="modalFooter">
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 
 
@@ -222,26 +236,26 @@
 
 
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
-  <script src="js/jquery.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+<script src="js/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
-  <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script> -->
+<script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script> -->
 
-  <!-- jquery-UI script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+<!-- jquery-UI script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
 
-  <!-- Sweet Alert CDN -->
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Sweet Alert CDN -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-  <!--  apiKey -->
-  <script src="js/config.json"></script>
+<!--  apiKey -->
+<script src="js/config.json"></script>
 
-  <!-- customised own JS script -->
-  <script src="js/script.js"></script>
+<!-- customised own JS script -->
+<script src="js/script.js"></script>
 </body>
 </html>

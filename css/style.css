@@ -1,6 +1,3 @@
-@font-face {
-  font-family: 'Pure Pakati';
-  src: url(../images/assets/fonts/pure-pakati/PurePakati-Regular.otf); }
 .align-baseline {
   vertical-align: baseline !important; }
 
@@ -20,7 +17,7 @@
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #29ade5 !important; }
+  background-color: #29ADE5 !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
@@ -120,7 +117,7 @@ button.bg-dark:focus {
   border-left: 0 !important; }
 
 .border-primary {
-  border-color: #29ade5 !important; }
+  border-color: #29ADE5 !important; }
 
 .border-secondary {
   border-color: #6c757d !important; }
@@ -2869,7 +2866,7 @@ button.bg-dark:focus {
   color: #fff !important; }
 
 .text-primary {
-  color: #29ade5 !important; }
+  color: #29ADE5 !important; }
 
 a.text-primary:hover, a.text-primary:focus {
   color: #157fad !important; }
@@ -3726,8 +3723,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #29ade5;
-  border-color: #29ade5; }
+  background-color: #29ADE5;
+  border-color: #29ADE5; }
   .btn-primary:hover {
     color: #fff;
     background-color: #1999cf;
@@ -3736,8 +3733,8 @@ fieldset:disabled a.btn {
     box-shadow: 0 0 0 0.2rem rgba(73, 185, 233, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
     color: #fff;
-    background-color: #29ade5;
-    border-color: #29ade5; }
+    background-color: #29ADE5;
+    border-color: #29ADE5; }
   .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: #1890c3;
@@ -3893,21 +3890,21 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(38, 38, 38, 0.5); }
 
 .btn-outline-primary {
-  color: #29ade5;
-  border-color: #29ade5; }
+  color: #29ADE5;
+  border-color: #29ADE5; }
   .btn-outline-primary:hover {
     color: #fff;
-    background-color: #29ade5;
-    border-color: #29ade5; }
+    background-color: #29ADE5;
+    border-color: #29ADE5; }
   .btn-outline-primary:focus, .btn-outline-primary.focus {
     box-shadow: 0 0 0 0.2rem rgba(41, 173, 229, 0.5); }
   .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-    color: #29ade5;
+    color: #29ADE5;
     background-color: transparent; }
   .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
     color: #fff;
-    background-color: #29ade5;
-    border-color: #29ade5; }
+    background-color: #29ADE5;
+    border-color: #29ADE5; }
     .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-primary.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(41, 173, 229, 0.5); }
 
@@ -4046,7 +4043,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #29ade5;
+  color: #29ADE5;
   text-decoration: none; }
   .btn-link:hover {
     color: #157fad;
@@ -4632,6 +4629,9 @@ textarea.form-control {
 @media (min-width: 1200px) {
   .modal-xl {
     max-width: 1140px; } }
+@font-face {
+  font-family: 'Pure Pakati';
+  src: url("../images/assets/fonts/pure-pakati/PurePakati-Regular.otf"); }
 * {
   margin: 0;
   padding: 0;
@@ -4639,16 +4639,16 @@ textarea.form-control {
 
 h1 {
   text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
-  font-family: 'Pure Pakati'; }
+  font-family: 'Pure Pakati', sans-serif; }
 
 h3 {
-  font-family: 'Pure Pakati'; }
+  font-family: 'Pure Pakati', sans-serif; }
 
 p, ol {
   font-family: "Josefin Sans", sans-serif; }
 
 .para-Style {
-  font-family: 'Pure Pakati';
+  font-family: 'Pure Pakati', sans-serif;
   font-size: 2rem; }
 
 .background-carousel {
@@ -4664,14 +4664,14 @@ p, ol {
 
 .logo-size {
   width: 160px;
-  height: 60px; }
+  height: 50px; }
 
 .icon-size {
   width: 70px;
   height: 70px; }
 
 .icon-size:hover {
-  color: #29ade5; }
+  color: #29ADE5; }
 
 .resize-font {
   font-size: 1.5rem; }
@@ -4720,24 +4720,27 @@ p, ol {
   width: 250px;
   height: 150px; }
 
-.fas {
+.fa-home {
   cursor: pointer; }
 
 @media (max-width: 600px) {
-  .quotes, .social-desktop, #imgBanner, #mobileDisplay, .desktop {
+  .quotes, .social-desktop, #imgBanner, #mobileDisplay, .desktop, #homeLogo, #map {
     display: none; }
 
   .background-carousel {
     width: 100%;
-    height: 667px; } }
-@media (min-width: 500px) {
+    height: 667px; }
+
+  .p-adjust-mobile {
+    padding-left: 1rem; } }
+@media only screen and (min-width: 400px) {
   .background-carousel {
     width: 100%;
     height: 1050px; }
 
   #map {
     display: none; } }
-@media (min-width: 600px) {
+@media only screen and (min-width: 600px) {
   .background-carousel {
     width: 100%;
     height: 1300px; } }
@@ -4752,8 +4755,12 @@ p, ol {
 
   .fa-twitter:hover, .fa-instagram:hover, .fa-facebook-f:hover, .fa-youtube:hover {
     color: black;
-    transform: scale(1.5); } }
-@media (min-width: 992px) {
+    transform: scale(1.5); }
+
+  .re-position {
+    top: 45%;
+    left: 35%; } }
+@media only screen and (min-width: 992px) {
   .background-carousel {
     width: 100%;
     height: 1030px; }
@@ -4778,7 +4785,7 @@ p, ol {
 
   .frame-size {
     width: 100%;
-    height: 300px; }
+    height: 700px; }
 
   .re-position {
     top: 55%;
@@ -4793,7 +4800,7 @@ p, ol {
 
   .mobile {
     display: none; } }
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   .background-carousel {
     width: 100%;
     height: 1150px; }
