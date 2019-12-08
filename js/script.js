@@ -832,7 +832,7 @@ document.getElementById('result').addEventListener('click', function(e) {
    +                '<p id="pricePerNight"> $' + accommodationToShow.price + ' / night</p>'
    +              '</div>'
    +              '<div class="col">'
-   +                '<p> $' + accommodationToShow.price + ' X 3 night/s</p>'
+   +                '<p> $' + accommodationToShow.price + ' X ' + days + ' night/s</p>'
    +              '</div>'
    +              '<div class="col">'
    +                '<p class="d-inline">$</p>'
